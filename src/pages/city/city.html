@@ -1,0 +1,26 @@
+<!--
+  Generated template for the CityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+          <button ion-button icon-only (click)="closeModal()" clear>
+            <ion-icon name="arrow-back" style="color: black; zoom: 0.7"></ion-icon>
+          </button>
+    <ion-title>city</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-list>
+      <ion-item *ngFor="let item of items" (click)="selCity(item)">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+</ion-content>

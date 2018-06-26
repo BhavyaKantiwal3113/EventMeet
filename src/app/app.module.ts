@@ -16,6 +16,11 @@ import { NotificationsPage} from '../pages/notifications/notifications';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CityPage } from '../pages/city/city';
+import { EventPopoverPage } from '../pages/event-popover/event-popover';
+import { DatePopoverPage } from '../pages/date-popover/date-popover';
+import { TermsPage } from '../pages/terms/terms';
+import { OrgProfilePage } from '../pages/org-profile/org-profile';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UserProfilePage,
     SelectCategoriesPage,
     IntroPage,
-
+    CityPage,
+    EventPopoverPage,
+    DatePopoverPage,
+    TermsPage,
+    OrgProfilePage,
     TabsPage
   ],
   imports: [
@@ -68,6 +77,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
      UserProfilePage,
      SelectCategoriesPage,
      IntroPage,
+     CityPage,
+     EventPopoverPage,
+     DatePopoverPage,
+     TermsPage,
+     OrgProfilePage,
     TabsPage
   ],
   providers: [

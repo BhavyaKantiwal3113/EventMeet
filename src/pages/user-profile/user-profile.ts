@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NotificationsPage } from '../notifications/notifications';
 import { ProfilePage } from '../profile/profile';
+import { TermsPage } from '../terms/terms';
 
 @IonicPage()
 @Component({
@@ -20,6 +21,10 @@ this.navCtrl.push(ProfilePage);
 openNotificationsPage()
 {
 this.navCtrl.push(NotificationsPage);
+}
+openTermsPage()
+{
+  this.navCtrl.push(TermsPage);
 }
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserProfilePage');

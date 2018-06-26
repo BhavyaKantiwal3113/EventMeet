@@ -1,15 +1,147 @@
+<!--
+  Generated template for the ExplorePage page.
 
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
 
   <ion-navbar>
     <ion-title>Explore</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openUserProfilePage()" >
+        <ion-icon name="md-person" style="color: black; zoom: 0.7"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <div>Check me!</div>
-    <input id="trigger" type="checkbox">
-    <label for="trigger" class="checker"></label>
+  <div class="row">
+    <div class="col-3" style="margin-right: 15px">
+      <button ion-button block (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon>
+      </button>
+    </div>
+    <div class="col-3" style="margin-right: 15px">
+      <button ion-button block (click)="presentDatePopover($event)">{{dateName}} <ion-icon name="md-arrow-dropdown"></ion-icon></button>
+    </div>
+    <div class="col-3" style="margin-right: 15px">
+      <button ion-button block (click)="presentEventPopover($event)">{{eventName}} <ion-icon name="md-arrow-dropdown"></ion-icon></button>
+    </div>
+</div>
+<ion-item style="padding: 25px">
+  Featured Events in {{cityName}}
+  <button ion-button clear style="float: right;">See All</button>
+  <div>
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+      <ion-slide>
+        <img src="assets/imgs/a.jpg" class="thumb-img"/>
+        <h2>Music Fest</h2>
+        <p>2018</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/b.jpg" class="thumb-img"/>
+        <h2>Jazz Concert</h2>
+        <p>2018</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-item>
+
+<ion-item style="padding: 25px">
+  Upcoming Events in {{cityName}}
+  <button ion-button clear style="float: right;">See All</button>
+  <div>
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+      <ion-slide>
+        <img src="assets/imgs/a.jpg" class="thumb-img"/>
+        <h2>Music Fest</h2>
+        <p>2018</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/b.jpg" class="thumb-img"/>
+        <h2>Jazz Concert</h2>
+        <p>2018</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-item>
+
+<ion-item style="padding: 25px">
+  Business Events in {{cityName}}
+  <button ion-button clear style="float: right;">See All</button>
+  <div>
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+      <ion-slide>
+        <img src="assets/imgs/a.jpg" class="thumb-img"/>
+        <h2>Music Fest</h2>
+        <p>2018</p>   
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/b.jpg" class="thumb-img"/>
+        <h2>Jazz Concert</h2>
+        <p>2018</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-item>
+
+<ion-item style="padding: 25px">
+  Sports Events in {{cityName}}
+  <button ion-button clear style="float: right;">See All</button>
+  <div>
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+      <ion-slide>
+        <img src="assets/imgs/a.jpg" class="thumb-img"/>
+        <h2>Music Fest</h2>
+        <p>2018</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/b.jpg" class="thumb-img"/>
+        <h2>Jazz Concert</h2>
+        <p>2018</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-item>
+
+<ion-item style="padding: 25px">
+  Exhibitions in {{cityName}}
+  <button ion-button clear style="float: right;">See All</button>
+  <div>
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+      <ion-slide>
+        <img src="assets/imgs/a.jpg" class="thumb-img"/>
+        <h2>Music Fest</h2>
+        <p>2018</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/b.jpg" class="thumb-img"/>
+        <h2>Jazz Concert</h2>
+        <p>2018</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-item>
+
+<ion-item style="padding: 25px">
+  Top Organizers
+  <button ion-button clear style="float: right;">See All</button>
+  <div>
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+      <ion-slide>
+        <img src="assets/imgs/a.jpg" class="thumb-img" (click)="goToOrgProfile()"/>
+        <h2>Music Fest</h2>
+        <p>2018</p>
+      </ion-slide>
+      <ion-slide>
+        <img src="assets/imgs/b.jpg" class="thumb-img" (click)="goToOrgProfile()"/>
+        <h2>Jazz Concert</h2>
+        <p>2018</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-item>
 </ion-content>
