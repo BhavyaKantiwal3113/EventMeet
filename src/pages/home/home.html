@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-navbar>
+    
+  
+                <ion-title>EventMeet</ion-title> 
+                <ion-buttons end>
+                    <button ion-button icon-only (click)="openProfilePage()">
+                      <ion-icon name="md-person" style="color:black;zoom: 0.7">
+                      </ion-icon>
+                    </button>
+                  </ion-buttons>  
+  </ion-navbar>
+ 
+</ion-header>
+
+<ion-content padding>
+    
+      <div style="height: 100px">
+    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+        <ion-slide>
+        
+          <img src="assets/imgs/1.jpg" class="thumb-img" imageViewer/>
+        </ion-slide>
+        <ion-slide>
+        
+            <img src="assets/imgs/2.jpg" class="thumb-img" imageViewer/>
+          </ion-slide>
+          <ion-slide>
+        
+              <img src="assets/imgs/3.jpg" class="thumb-img" imageViewer/>
+            </ion-slide>
+      </ion-slides>
+      </div>
+
+      <ion-item>
+    <button ion-button clear style="width:100%">See All</button>
+      </ion-item>
+
+    
+
+      <div >
+         <ion-segment [(ngModel)]="abc">
+      <ion-segment-button value="one" >
+        Upcoming
+      </ion-segment-button>
+      <ion-segment-button value="two">
+        All
+      </ion-segment-button>
+  
+    <ion-segment-button value="three">
+        Past
+      </ion-segment-button>
+         </ion-segment>
+      </div>
+  
+      <div [ngSwitch]="abc">
+          <ion-list *ngSwitchCase="'one'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/8.jpg">
+        </ion-thumbnail>
+        <h2>Event1</h2> 
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/9.jpg">
+        </ion-thumbnail>
+        <h2>Event2</h2> 
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/2.jpg">
+        </ion-thumbnail>
+        <h2>Event3</h2> 
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/3.jpg">
+        </ion-thumbnail>
+        <h2>Event4</h2> 
+      </ion-item>
+      
+          </ion-list>
+  
+          <ion-list *ngSwitchCase="'two'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/3.jpg">
+        </ion-thumbnail>
+        <h2>Eventabc</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/4.jpg">
+        </ion-thumbnail>
+        <h2>Eventxyz</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/6.jpg">
+        </ion-thumbnail>
+        <h2>Eventefg</h2>
+      </ion-item>
+          </ion-list>
+
+          <ion-list *ngSwitchCase="'three'">
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="assets/imgs/1.jpg">
+            </ion-thumbnail>
+            <h2>Eventjfnqwe</h2>
+          </ion-item>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="assets/imgs/7.jpg">
+            </ion-thumbnail>
+            <h2>eventjdfjw</h2>
+          </ion-item>
+          <ion-item>
+            <ion-thumbnail item-start>
+              <img src="assets/imgs/9.jpg">
+            </ion-thumbnail>
+            <h2>Eventwjnrnjr</h2>
+          </ion-item>
+          </ion-list>
+       </div>
+
+
+</ion-content>

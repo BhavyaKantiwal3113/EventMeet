@@ -1,0 +1,66 @@
+
+<ion-header>
+
+  <ion-navbar>
+
+
+        <ion-title>Profile</ion-title> 
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item no-lines>
+    <ion-avatar item-start>
+      <img src="assets/imgs/7.jpg" style="min-height: 80px;min-width: 80px;" imageViewer/>
+    </ion-avatar>
+    <h2 style="font-weight: bold">  Bhavya Kantiwal</h2>
+    <p (click)=openProfilePage()>View Profile</p>
+  </ion-item>
+
+
+<ion-list>
+    <ion-list-header class="makeBold" style="font-weight: bold">
+      MY ACCOUNT
+    </ion-list-header>
+    <ion-item (click)=openNotificationsPage()><ion-icon  class="space" name="ios-notifications-outline" style="margin-right: 9px"></ion-icon>Notifications</ion-item>
+   
+  </ion-list>
+
+  <ion-list>
+      <ion-list-header class="makeBold" style="font-weight: bold">
+        EVENTS
+      </ion-list-header>
+   
+      
+      <ion-item><ion-icon   name="ios-options-outline" class="space"></ion-icon>XYZ</ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header class="makeBold" style="font-weight: bold">
+         PERSONALIZE EVENT UPDATES
+        </ion-list-header>
+      <ion-item><ion-icon   name="ios-map-outline" class="space"></ion-icon>City Subscriptions</ion-item>
+        <ion-item><ion-icon   name="ios-options-outline" class="space"></ion-icon>Category Prefrence</ion-item>
+      </ion-list>
+      <ion-list>
+          <ion-list-header class="makeBold" style="font-weight: bold">
+            About
+          </ion-list-header>
+          <ion-item>  <ion-icon   ios="ios-information-circle-outline" class="space"></ion-icon>About Us</ion-item>
+          <ion-item>  <ion-icon   ios="ios-mail-outline" class="space"></ion-icon>Send Us Feedback</ion-item>
+          <ion-item><ion-icon   ios="ios-document-outline" class="space"></ion-icon>Terms and Conditions</ion-item>
+          <ion-item><ion-icon   ios="ios-help-circle-outline" md="md-help-circle-outline" class="space"></ion-icon>Help</ion-item>
+        </ion-list>
+
+        <ion-list>
+            <ion-list-header style="font-weight: bold">
+                 Logout
+              </ion-list-header>
+           
+        </ion-list>
+
+</ion-content>
