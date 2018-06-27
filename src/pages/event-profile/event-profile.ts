@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { EventProfilePage } from '../event-profile/event-profile';
 
 /**
- * Generated class for the OrgProfilePage page.
+ * Generated class for the EventProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,19 +10,25 @@ import { EventProfilePage } from '../event-profile/event-profile';
 
 @IonicPage()
 @Component({
-  selector: 'page-org-profile',
-  templateUrl: 'org-profile.html',
+  selector: 'page-event-profile',
+  templateUrl: 'event-profile.html',
 })
-export class OrgProfilePage {
- 
+export class EventProfilePage {
+  
+  more = true;
+  interested = true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrgProfilePage');
+    console.log('ionViewDidLoad EventProfilePage');
   }
-  openEventProfilePage()
- {
-   this.navCtrl.push(EventProfilePage);
- }
+  toggleSection()
+  {
+    this.more = !this.more;
+  }
+  goInEvent()
+  {
+    this.interested = !this.interested;
+  }
 }
