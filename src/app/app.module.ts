@@ -21,6 +21,7 @@ import { EventPopoverPage } from '../pages/event-popover/event-popover';
 import { DatePopoverPage } from '../pages/date-popover/date-popover';
 import { TermsPage } from '../pages/terms/terms';
 import { OrgProfilePage } from '../pages/org-profile/org-profile';
+import { EventProfilePage } from '../pages/event-profile/event-profile';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { OrgProfilePage } from '../pages/org-profile/org-profile';
     DatePopoverPage,
     TermsPage,
     OrgProfilePage,
+    EventProfilePage,
     TabsPage
   ],
   imports: [
@@ -82,6 +84,7 @@ import { OrgProfilePage } from '../pages/org-profile/org-profile';
      DatePopoverPage,
      TermsPage,
      OrgProfilePage,
+     EventProfilePage,
     TabsPage
   ],
   providers: [

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventProfilePage } from '../event-profile/event-profile';
 
 /**
  * Generated class for the OrgProfilePage page.
@@ -14,12 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'org-profile.html',
 })
 export class OrgProfilePage {
-
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrgProfilePage');
   }
-
+  openEventProfilePage()
+ {
+   this.navCtrl.push(EventProfilePage);
+ }
 }
