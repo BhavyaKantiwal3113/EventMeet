@@ -1,7 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+
+import { Camera } from '@ionic-native/camera';
 import { ExplorePage } from '../pages/explore/explore';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -87,6 +90,7 @@ import { OrgProfilePage } from '../pages/org-profile/org-profile';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

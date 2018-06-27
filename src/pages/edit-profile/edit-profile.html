@@ -1,9 +1,4 @@
-<!--
-  Generated template for the EditProfilePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,17 +9,45 @@
 
 
 <ion-content padding>
+     <!-- <p>gfff<img src= "{{imageURL}}"></p> -->
   <ion-list>
 
+
+    <section text-center class="profile-picture">
+      <span class="profile-picture__icon">
+        <ion-icon name="ios-camera" md="md-camera" (click)="selectImage()"></ion-icon>
+      </span>
+      <img *ngIf="imageURL" [src]="imageURL" class="profile-picture__image" alt="Profile Picture">
+      <img *ngIf="!imageURL" [src]="'assets/imgs/3.jpg'" class="profile-picture__image" alt="Profile Picture">
+    </section>
+
+    <ion-item > 
+      
+      <ion-label floating>Firstname</ion-label>
+      <ion-input type="text" [(ngModel)]="user_firstName"></ion-input>
+    </ion-item>
+  
     <ion-item >
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text" [(ngModel)]="user_name"></ion-input>
+      <ion-label floating>Lastname</ion-label>
+      <ion-input type="text" [(ngModel)]="user_lastName"></ion-input>
+    </ion-item>
+    <ion-item > 
+      
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="user_email"></ion-input>
     </ion-item>
   
     <ion-item >
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="user_password"></ion-input>
     </ion-item>
+    <ion-item >
+      <ion-label floating>Confirm Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user_Confirmpassword"></ion-input>
+    </ion-item>
   
   </ion-list>
+<ion-item>
+  <button ion-button (click)="saveChanges()">Save Changes</button>
+</ion-item>
 </ion-content>
