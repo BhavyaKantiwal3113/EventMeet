@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the EventProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Map1Page } from '../map1/map1';
+import { Map3Page } from '../map3/map3';
 
 @IonicPage()
 @Component({
@@ -23,6 +19,7 @@ export class EventProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventProfilePage');
   }
+ 
   toggleSection()
   {
     this.more = !this.more;
@@ -30,5 +27,11 @@ export class EventProfilePage {
   goInEvent()
   {
     this.interested = !this.interested;
+  }
+  openMap1Page(){
+    this.navCtrl.push(Map1Page);
+  }
+  openMap3Page(){
+    this.navCtrl.push(Map3Page);
   }
 }

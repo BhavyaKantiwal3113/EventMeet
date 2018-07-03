@@ -5,8 +5,8 @@ import { DatePopoverPage } from '../date-popover/date-popover';
 import { EventPopoverPage } from '../event-popover/event-popover';
 import { ModalController } from 'ionic-angular';
 import { CityPage } from '../city/city';
-import { OrgProfilePage } from '../org-profile/org-profile';
 import { UserProfilePage } from '../user-profile/user-profile';
+import { EventProfilePage } from '../event-profile/event-profile';
 
 /**
  * Generated class for the ExplorePage page.
@@ -55,9 +55,8 @@ export class ExplorePage {
       ev: myEvent
     });
   }
-  goToOrgProfile()
-  {
-    this.navCtrl.push(OrgProfilePage);
+  openEventProfilePage(){
+    this.navCtrl.push(EventProfilePage);
   }
   openUserProfilePage()
   {

@@ -37,7 +37,7 @@
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
       <ion-slide>
-        <img src="assets/imgs/a.jpg" class="thumb-img"/>
+        <img src="assets/imgs/a.jpg" (click)="openEventProfilePage()" class="thumb-img"/>
         <h2>Music Fest</h2>
         <p>2018</p>
       </ion-slide>
@@ -126,22 +126,5 @@
   </div>
 </ion-item>
 
-<ion-item style="padding: 25px">
-  Top Organizers
-  <button ion-button clear style="float: right;">See All</button>
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide>
-        <img src="assets/imgs/a.jpg" class="thumb-img" (click)="goToOrgProfile()"/>
-        <h2>Music Fest</h2>
-        <p>2018</p>
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/b.jpg" class="thumb-img" (click)="goToOrgProfile()"/>
-        <h2>Jazz Concert</h2>
-        <p>2018</p>
-      </ion-slide>
-    </ion-slides>
-  </div>
-</ion-item>
+
 </ion-content>

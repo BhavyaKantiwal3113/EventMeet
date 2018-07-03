@@ -3,11 +3,11 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
+import { NguiMapModule} from '@ngui/map';
 import { Camera } from '@ionic-native/camera';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { ExplorePage } from '../pages/explore/explore';
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -23,8 +23,10 @@ import { CityPage } from '../pages/city/city';
 import { EventPopoverPage } from '../pages/event-popover/event-popover';
 import { DatePopoverPage } from '../pages/date-popover/date-popover';
 import { TermsPage } from '../pages/terms/terms';
-import { OrgProfilePage } from '../pages/org-profile/org-profile';
 import { EventProfilePage } from '../pages/event-profile/event-profile';
+
+import {Map1Page} from '../pages/map1/map1';
+import {Map3Page} from '../pages/map3/map3';
 
 @NgModule({
   declarations: [
@@ -32,29 +34,26 @@ import { EventProfilePage } from '../pages/event-profile/event-profile';
     ExplorePage,
     EditProfilePage,
     AboutPage,
-    ContactPage,
     HomePage,
     NotificationsPage,
     ProfilePage,
     UserProfilePage,
     SelectCategoriesPage,
     IntroPage,
+    
     CityPage,
+    Map1Page,
+    Map3Page,
     EventPopoverPage,
     DatePopoverPage,
     TermsPage,
-    OrgProfilePage,
     EventProfilePage,
     TabsPage
   ],
   imports: [
     BrowserModule,
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyChtIus3arMIhw9IROgfuFiWghMaCIwLL4'}),
     IonicImageViewerModule,
-  
-      // backButtonText: '',
-      // backButtonIcon: 'ios-close',
-      // iconMode: 'md'
-  
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       //  backButtonIcon: 'ios-close',
@@ -74,19 +73,19 @@ import { EventProfilePage } from '../pages/event-profile/event-profile';
     MyApp,
     AboutPage,
     ProfilePage,
-    ContactPage,
     EditProfilePage,
     HomePage,
      ExplorePage,
-     NotificationsPage,
+          NotificationsPage,
      UserProfilePage,
      SelectCategoriesPage,
      IntroPage,
      CityPage,
+     Map1Page,
+     Map3Page,
      EventPopoverPage,
      DatePopoverPage,
      TermsPage,
-     OrgProfilePage,
      EventProfilePage,
     TabsPage
   ],
@@ -94,6 +93,7 @@ import { EventProfilePage } from '../pages/event-profile/event-profile';
     StatusBar,
     SplashScreen,
     Camera,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

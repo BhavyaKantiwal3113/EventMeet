@@ -36,5 +36,5 @@ export class SelectCategoriesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectCategoriesPage');
   }
-
 }
+ 

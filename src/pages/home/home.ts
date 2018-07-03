@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { App,NavController } from 'ionic-angular';
 import { UserProfilePage } from '../user-profile/user-profile';
 @Component({
   selector: 'page-home',
@@ -9,13 +9,14 @@ export class HomePage {
   images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
 abc;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,public appCtrl: App) {
     this.abc = "one";
   }
   
   openProfilePage()
 {
-this.navCtrl.push(UserProfilePage);
+  this.appCtrl.getRootNav().push(UserProfilePage);
+//this.navCtrl.push(UserProfilePage);
 }
 
 }

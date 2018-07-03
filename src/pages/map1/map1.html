@@ -1,0 +1,34 @@
+<!--
+  Generated template for the Map1Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>map1</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+  <!-- center="26.9124, 75.77888"   -->
+<ion-content padding>
+  <!-- <ngui-map center="Brampton, Canada"></ngui-map> -->
+
+
+  <ngui-map 
+  zoom="13" 
+
+  center="26.8557, 75.8089" 
+  (mapReady$)="onMapReady($event)"
+  (mapClick)="onMapClick($event)"
+  (idle)="onIdle($event)"
+  mapTypeId="satellite">
+    <marker *ngFor="let pos of positions" 
+      [position]="pos"
+      (initialized$)="onMarkerInit($event)"></marker>
+</ngui-map>
+
+
+</ion-content>
