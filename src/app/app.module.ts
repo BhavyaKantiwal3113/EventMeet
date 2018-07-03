@@ -7,7 +7,6 @@ import { MyApp } from './app.component';
 import { Camera } from '@ionic-native/camera';
 import { ExplorePage } from '../pages/explore/explore';
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
@@ -23,8 +22,8 @@ import { CityPage } from '../pages/city/city';
 import { EventPopoverPage } from '../pages/event-popover/event-popover';
 import { DatePopoverPage } from '../pages/date-popover/date-popover';
 import { TermsPage } from '../pages/terms/terms';
-import { OrgProfilePage } from '../pages/org-profile/org-profile';
 import { EventProfilePage } from '../pages/event-profile/event-profile';
+
 
 @NgModule({
   declarations: [
@@ -32,33 +31,25 @@ import { EventProfilePage } from '../pages/event-profile/event-profile';
     ExplorePage,
     EditProfilePage,
     AboutPage,
-    ContactPage,
     HomePage,
     NotificationsPage,
-    ProfilePage,
-    UserProfilePage,
+    ProfilePage,                  // view profile page
+    UserProfilePage,              // user's first profile page
     SelectCategoriesPage,
     IntroPage,
-    CityPage,
-    EventPopoverPage,
+    CityPage,                    // popover to select city
+    EventPopoverPage,            // popover to select date
     DatePopoverPage,
     TermsPage,
-    OrgProfilePage,
     EventProfilePage,
-    TabsPage
+    TabsPage                    // to control tabs
   ],
   imports: [
     BrowserModule,
     IonicImageViewerModule,
   
-      // backButtonText: '',
-      // backButtonIcon: 'ios-close',
-      // iconMode: 'md'
-  
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
-      //  backButtonIcon: 'ios-close',
-      //  iconMode: 'md',
       backButtonIcon:'arrow-back',
       tabsPlacement: 'bottom',
       platforms: {
@@ -74,7 +65,6 @@ import { EventProfilePage } from '../pages/event-profile/event-profile';
     MyApp,
     AboutPage,
     ProfilePage,
-    ContactPage,
     EditProfilePage,
     HomePage,
      ExplorePage,
@@ -86,7 +76,6 @@ import { EventProfilePage } from '../pages/event-profile/event-profile';
      EventPopoverPage,
      DatePopoverPage,
      TermsPage,
-     OrgProfilePage,
      EventProfilePage,
     TabsPage
   ],

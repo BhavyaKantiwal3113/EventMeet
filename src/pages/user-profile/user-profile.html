@@ -36,7 +36,7 @@
       </ion-list-header>
    
       
-      <ion-item><ion-icon   name="ios-options-outline" class="space"></ion-icon>XYZ</ion-item>
+      <ion-item (click)="openProfilePage()"><ion-icon   name="ios-options-outline" class="space"></ion-icon>Interested Events</ion-item>
     </ion-list>
 
     <ion-list>
@@ -44,7 +44,7 @@
          PERSONALIZE EVENT UPDATES
         </ion-list-header>
       <ion-item><ion-icon   name="ios-map-outline" class="space"></ion-icon>City Subscriptions</ion-item>
-        <ion-item><ion-icon   name="ios-options-outline" class="space"></ion-icon>Category Prefrence</ion-item>
+        <ion-item (click)="openSelectCategoriesPage()"><ion-icon   name="ios-options-outline" class="space"></ion-icon>Category Prefrence</ion-item>
       </ion-list>
       <ion-list>
           <ion-list-header class="makeBold" style="font-weight: bold">

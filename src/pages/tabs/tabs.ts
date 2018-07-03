@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ExplorePage } from '../explore/explore';
-import { ContactPage } from '../contact/contact';
+
 import { HomePage } from '../home/home';
 import { NotificationsPage } from '../notifications/notifications';
 
