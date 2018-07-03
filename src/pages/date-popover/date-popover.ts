@@ -23,6 +23,6 @@ export class DatePopoverPage {
   }
   
   close(selValue) {
-    this.viewCtrl.dismiss(selValue);
+    this.viewCtrl.dismiss(selValue);      //sends selected value from date-popover to explore page
   }
 }

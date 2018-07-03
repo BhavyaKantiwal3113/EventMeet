@@ -36,8 +36,8 @@ import {Map3Page} from '../pages/map3/map3';
     AboutPage,
     HomePage,
     NotificationsPage,
-    ProfilePage,
-    UserProfilePage,
+    ProfilePage,                  // view profile page
+    UserProfilePage,              // user's first profile page
     SelectCategoriesPage,
     IntroPage,
     
@@ -48,7 +48,7 @@ import {Map3Page} from '../pages/map3/map3';
     DatePopoverPage,
     TermsPage,
     EventProfilePage,
-    TabsPage
+    TabsPage                    // to control tabs
   ],
   imports: [
     BrowserModule,
@@ -56,8 +56,6 @@ import {Map3Page} from '../pages/map3/map3';
     IonicImageViewerModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
-      //  backButtonIcon: 'ios-close',
-      //  iconMode: 'md',
       backButtonIcon:'arrow-back',
       tabsPlacement: 'bottom',
       platforms: {

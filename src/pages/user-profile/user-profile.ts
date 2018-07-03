@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NotificationsPage } from '../notifications/notifications';
 import { ProfilePage } from '../profile/profile';
 import { TermsPage } from '../terms/terms';
+import { SelectCategoriesPage } from '../select-categories/select-categories';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,10 @@ openTermsPage()
 {
   this.navCtrl.push(TermsPage);
 }
+openSelectCategoriesPage()
+  {
+    this.navCtrl.push(SelectCategoriesPage);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserProfilePage');
   }

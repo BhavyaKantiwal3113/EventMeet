@@ -86,6 +86,6 @@ export class CityPage {
   }
   selCity(city)
   {
-    this.viewCtrl.dismiss(city);
+    this.viewCtrl.dismiss(city);      //send selected city to explore page
   }
 }
