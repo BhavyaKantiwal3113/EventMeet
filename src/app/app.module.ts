@@ -1,7 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { GooglePlus} from '@ionic-native/google-plus';
+import { AngularFireModule} from 'angularfire2';
+//import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 import { MyApp } from './app.component';
 import { NguiMapModule} from '@ngui/map';
 import { Camera } from '@ionic-native/camera';
@@ -24,23 +27,37 @@ import { EventPopoverPage } from '../pages/event-popover/event-popover';
 import { DatePopoverPage } from '../pages/date-popover/date-popover';
 import { TermsPage } from '../pages/terms/terms';
 import { EventProfilePage } from '../pages/event-profile/event-profile';
-
 import {Map1Page} from '../pages/map1/map1';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { SplashPage } from '../pages/splash/splash';
+ import { HttpClientModule } from '@angular/common/http';
+ import { HttpModule } from '@angular/http';
 import {Map3Page} from '../pages/map3/map3';
-
+import { UserProvider } from '../providers/user/user';
+import { AngularFirestore } from 'angularfire2/firestore';
+export const firebaseConfig = {
+  apiKey: "AIzaSyBxCLgie5yAgTV9I6C5T56z26Yv2XiOGeM",
+  authDomain: "demofirestore-41a91.firebaseapp.com",
+  databaseURL: "https://demofirestore-41a91.firebaseio.com",
+  projectId: "demofirestore-41a91",
+  storageBucket: "demofirestore-41a91.appspot.com",
+  messagingSenderId: "32395217535"
+}
+firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
+   
     MyApp,
     ExplorePage,
     EditProfilePage,
     AboutPage,
+    SplashPage,
     HomePage,
     NotificationsPage,
     ProfilePage,                  // view profile page
     UserProfilePage,              // user's first profile page
     SelectCategoriesPage,
     IntroPage,
-    
     CityPage,
     Map1Page,
     Map3Page,
@@ -51,7 +68,10 @@ import {Map3Page} from '../pages/map3/map3';
     TabsPage                    // to control tabs
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,HttpClientModule,
+    HttpModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyChtIus3arMIhw9IROgfuFiWghMaCIwLL4'}),
     IonicImageViewerModule,
     IonicModule.forRoot(MyApp, {
@@ -63,7 +83,7 @@ import {Map3Page} from '../pages/map3/map3';
           tabsPlacement: 'bottom',
         }
       }
-    }
+    },
   )],
    
      bootstrap: [IonicApp],
@@ -74,25 +94,28 @@ import {Map3Page} from '../pages/map3/map3';
     EditProfilePage,
     HomePage,
      ExplorePage,
-          NotificationsPage,
+    NotificationsPage,
      UserProfilePage,
      SelectCategoriesPage,
      IntroPage,
      CityPage,
      Map1Page,
      Map3Page,
+     SplashPage,
      EventPopoverPage,
      DatePopoverPage,
      TermsPage,
      EventProfilePage,
     TabsPage
   ],
-  providers: [
+  providers: [ UserProvider,
     StatusBar,
     SplashScreen,
     Camera,
     NativeGeocoder,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFirestore,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GooglePlus,
   ]
 })
 export class AppModule {}

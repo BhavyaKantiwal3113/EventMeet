@@ -2,13 +2,15 @@
 <ion-header>
 
   <ion-navbar>
-
+      <ion-title>
+        Categories
+      </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color: rgb(245, 241, 248)">
 
   <ion-row>
     <ion-col col-8>What Interests You?
@@ -16,23 +18,44 @@
       Tap a Few Categories You Like
     </ion-col>
     <ion-col col-4>
-        <button ion-button style="height:80%" (click)=goToHomePage()>Done</button>
+        <button ion-button color="dark" style="height:80%;" (click)=goToHomePage()>Done</button>
     </ion-col>
   </ion-row>
-  
-   
-
-
-
-      <ion-grid>
+      <!-- <ion-grid>
           <ion-row>
             <ion-col col-6 col-md-4 col-xl-3 style="padding: 7px" *ngFor="let category of categories;let i = index">
                
-              <div (click)=check(category,i) [ngClass]="{'selected':category.select}" class="image-container"  [style.background-image]="'url(' + category.url + ')'"></div>
+              <div (click)=check(category,i) [ngClass]="{'selected':category.select}" class="image-container"  [style.background-image]="'url(' + category.Pic + ')'"></div>
               
          
             </ion-col>
           </ion-row>
         </ion-grid>
+     -->
+
     
+
+<!-- 
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 col-md-4 col-xl-3 style="padding: 7px" *ngFor="let cname of categoriesname; let cpic of categorespic;let i = index">
+               
+              <div (click)=check(cpic,i) [ngClass]="{'selected':category.select}" class="image-container"  [style.background-image]="'url(' + category.url + ')'"></div>
+              
+         
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <!-- <p *ngFor="let category of categories | async">
+          {{category.Name}}
+        </p> -->
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 col-md-4 col-xl-3 class="catText" *ngFor="let category of categories | async">
+              <div class="image-container" [style.background-image]="'url(' + category.Pic + ')'">
+              </div>
+             <p style="padding: 1px"> {{category.Name}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 </ion-content>
