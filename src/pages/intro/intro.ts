@@ -9,6 +9,8 @@ import { auth } from 'firebase';
 import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Http } from '@angular/http';
+import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 // import {Observable} from 'rxjs/Observable';
 // import { ProfilePage } from '../profile/profile';
 
@@ -22,6 +24,7 @@ export interface UserData { Name: string,
 })
 export class IntroPage {
   userRef: AngularFirestoreCollection<UserData>;
+  userEmail;
   constructor(public navCtrl: NavController,private viewCtrl: ViewController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public afAuth:AngularFireAuth, 
     public googleplus: GooglePlus, public http: HttpClient, db: AngularFirestore, public httpm: Http) 
     {
@@ -31,7 +34,7 @@ export class IntroPage {
     console.log('ionViewDidLoad IntroPage');
   }
   
-  presentActionSheet() {
+  presentActionSheet(k) {
     let actionSheet = this.actionSheetCtrl.create({
       
        buttons: [
@@ -39,8 +42,10 @@ export class IntroPage {
            icon: 'logo-googleplus',
            text: 'Login with Google',
            handler: () => {
-                  //this.navCtrl.push(LoginPage)
+             if(k==1)
                   this.login();
+             if(k==2)
+                  this.signup();
                 }
          }
        ]
@@ -48,11 +53,43 @@ export class IntroPage {
  
     actionSheet.present();
   }
-  logout() {
-    this.afAuth.auth.signOut();
+  // logout() {
+  //   this.afAuth.auth.signOut();
+  // }
+  login()
+  {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+            if(this.afAuth.user)
+            {
+             let u = this.afAuth.auth.currentUser;
+             if (u != null) {
+                 u.providerData.forEach( (profile)=> {
+                 console.log("Sign-in provider: " + profile.providerId);
+                 console.log("  Provider-specific UID: " + profile.uid);
+                 console.log("  Name: " + profile.displayName);
+                 console.log("  Email: " + profile.email);
+                 console.log("  Photo URL: " + profile.photoURL);
+                this.userEmail = profile.email;
+      });
+    }
+  }       
+          this.getLoginUserDetails(this.userEmail);
+           
   }
-  login() {
-   // this.logout();
+  getLoginUserDetails(userEmail)
+  {
+    this.userRef.ref.where("Email","==", userEmail)
+    .get().then((querySnapshot) => {
+            if(querySnapshot.empty)
+              console.log("Login Failed");
+            else
+               this.navCtrl.setRoot(TabsPage, {
+                 data: userEmail
+               }); 
+    });
+  }
+  signup() {
+    let newemailid;
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
             if(this.afAuth.user)
             {
@@ -70,10 +107,13 @@ export class IntroPage {
                    Pic: profile.photoURL
                  }
                  this.userRef.add(userdata);
+                 newemailid = userdata.Email;
       });
     }
   }       
-           this.navCtrl.setRoot(SelectCategoriesPage);
+           this.navCtrl.setRoot(SelectCategoriesPage, {
+             data: newemailid
+           });
             }
     
   openSelectCategoriesPage()

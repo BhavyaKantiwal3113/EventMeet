@@ -31,27 +31,14 @@
             </ion-slide>
       </ion-slides>
       </div>
-
-      <ion-item>
-    <button ion-button clear style="width:100%">See All</button>
-      </ion-item>
-
-    
-
-      <div >
-         <ion-segment [(ngModel)]="abc">
+      <!-- <div > -->
+         <!-- <ion-segment [(ngModel)]="abc">
       <ion-segment-button value="one" >
         Upcoming
       </ion-segment-button>
       <ion-segment-button value="two">
         All
       </ion-segment-button>
-  
-    <ion-segment-button value="three">
-        Past
-      </ion-segment-button>
-         </ion-segment>
-      </div>
   
       <div [ngSwitch]="abc">
           <ion-list *ngSwitchCase="'one'">
@@ -102,28 +89,16 @@
         <h2>Eventefg</h2>
       </ion-item>
           </ion-list>
+       </div> -->
+<!-- <ion-slides>
+  <ion-slide style="background-color: green">
+    <h2>Slide 1</h2>
+  </ion-slide>
 
-          <ion-list *ngSwitchCase="'three'">
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="assets/imgs/1.jpg">
-            </ion-thumbnail>
-            <h2>Eventjfnqwe</h2>
-          </ion-item>
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="assets/imgs/7.jpg">
-            </ion-thumbnail>
-            <h2>eventjdfjw</h2>
-          </ion-item>
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="assets/imgs/9.jpg">
-            </ion-thumbnail>
-            <h2>Eventwjnrnjr</h2>
-          </ion-item>
-          </ion-list>
-       </div>
+  <ion-slide style="background-color: blue">
+    <h2>Slide 2</h2>
+  </ion-slide>
+</ion-slides> -->
 
 
 </ion-content>
