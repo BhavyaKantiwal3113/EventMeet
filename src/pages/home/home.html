@@ -14,91 +14,13 @@
 </ion-header>
 
 <ion-content padding>
-    
-      <div style="height: 100px">
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
-        <ion-slide>
-        
-          <img src="assets/imgs/1.jpg" class="thumb-img" imageViewer/>
+    <h2 class = "font-trend">Trending Now</h2>
+      <div style="height: 100px" >
+    <ion-slides class="image-slider" loop="false" slidesPerView="2" >
+        <ion-slide *ngFor="let eimage of eventimg">
+          <img src = {{eimage}} class="thumb-img" imageViewer/>
         </ion-slide>
-        <ion-slide>
-        
-            <img src="assets/imgs/2.jpg" class="thumb-img" imageViewer/>
-          </ion-slide>
-          <ion-slide>
-        
-              <img src="assets/imgs/3.jpg" class="thumb-img" imageViewer/>
-            </ion-slide>
-      </ion-slides>
+    </ion-slides>
       </div>
-      <!-- <div > -->
-         <!-- <ion-segment [(ngModel)]="abc">
-      <ion-segment-button value="one" >
-        Upcoming
-      </ion-segment-button>
-      <ion-segment-button value="two">
-        All
-      </ion-segment-button>
-  
-      <div [ngSwitch]="abc">
-          <ion-list *ngSwitchCase="'one'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/8.jpg">
-        </ion-thumbnail>
-        <h2>Event1</h2> 
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/9.jpg">
-        </ion-thumbnail>
-        <h2>Event2</h2> 
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/2.jpg">
-        </ion-thumbnail>
-        <h2>Event3</h2> 
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/3.jpg">
-        </ion-thumbnail>
-        <h2>Event4</h2> 
-      </ion-item>
-      
-          </ion-list>
-  
-          <ion-list *ngSwitchCase="'two'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/3.jpg">
-        </ion-thumbnail>
-        <h2>Eventabc</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/4.jpg">
-        </ion-thumbnail>
-        <h2>Eventxyz</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/imgs/6.jpg">
-        </ion-thumbnail>
-        <h2>Eventefg</h2>
-      </ion-item>
-          </ion-list>
-       </div> -->
-<!-- <ion-slides>
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
-  </ion-slide>
-
-  <ion-slide style="background-color: blue">
-    <h2>Slide 2</h2>
-  </ion-slide>
-</ion-slides> -->
-
-
+     
 </ion-content>

@@ -3,6 +3,17 @@ import { App,NavController,NavParams, Slides } from 'ionic-angular';
 import { UserProfilePage } from '../user-profile/user-profile';
 import { constructDependencies } from '@angular/core/src/di/reflective_provider';
 import { first } from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Http } from '@angular/http';
+export interface trendingEvents{      //to get data from Events table
+   id: string,
+   name: string,
+   pic: string,
+   people: number
+}
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -10,47 +21,29 @@ import { first } from 'rxjs/operators';
 export class HomePage {
   myemail;
   images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
-  @ViewChild('mySlider') slider: Slides;
-  selectedSegment: string;
-  slides: any;
-
-  constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams) {
+  eventsCollection: AngularFirestoreCollection<trendingEvents>;
+  eventsInTrend: Observable<trendingEvents[]>;
+  eventimg=[];
+  constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
     this.myemail = navParams.get('data');
-    this.selectedSegment = 'first';
-    this.slides = [
-      {
-        id: "first",
-        title: "First Slide"
-      },
-      {
-        id: "second",
-        title: "Second Slide"
-      },
-      {
-        id: "third",
-        title: "Third Slide"
-      }
-    ];
-  }
-  onSegmentChanged(segmentButton) {
-    console.log(segmentButton);
-    console.log("Segment changed to", segmentButton.value);
-    const selectedIndex = this.slides.findIndex((slide) => {
-      return slide.id === segmentButton.value;
+   this.eventsCollection = db.collection<trendingEvents>("Events");
+   this.eventsInTrend = this.eventsCollection.valueChanges();
+  // this.events = this.eventsCollection.ref.orderBy("PeopleGoing", "desc").limit(8);
+  this.eventsCollection.ref.where("PeopleGoing", ">=", 100)
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      this.eventimg.push(doc.data().Pic);
     });
-    this.slider.slideTo(selectedIndex);
-    console.log(selectedIndex);
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+});
   }
-
-  onSlideChanged(slider) {
-    console.log('Slide changed');
-    const currentSlide = this.slides[slider.getActiveIndex()];
-    this.selectedSegment = currentSlide.id;
-  }
+  
   openProfilePage()
 {
   this.appCtrl.getRootNav().push(UserProfilePage);
-// this.navCtrl.push(UserProfilePage);
 }
 
 }
