@@ -35,6 +35,9 @@ import { SplashPage } from '../pages/splash/splash';
 import {Map3Page} from '../pages/map3/map3';
 import { UserProvider } from '../providers/user/user';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { CitySubscriptionPage } from '../pages/city-subscription/city-subscription';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyBxCLgie5yAgTV9I6C5T56z26Yv2XiOGeM",
   authDomain: "demofirestore-41a91.firebaseapp.com",
@@ -65,7 +68,8 @@ firebase.initializeApp(firebaseConfig);
     DatePopoverPage,
     TermsPage,
     EventProfilePage,
-    TabsPage                    // to control tabs
+    TabsPage,                  // to control tabs
+    CitySubscriptionPage
   ],
   imports: [
     BrowserModule,HttpClientModule,
@@ -106,7 +110,8 @@ firebase.initializeApp(firebaseConfig);
      DatePopoverPage,
      TermsPage,
      EventProfilePage,
-    TabsPage
+    TabsPage,
+    CitySubscriptionPage
   ],
   providers: [ UserProvider,
     StatusBar,

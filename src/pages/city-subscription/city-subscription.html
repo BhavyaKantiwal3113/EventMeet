@@ -7,12 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>citySubscription</ion-title>
+    <ion-title>City Subscription</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label>Current Nearby City:</ion-label>
+      <ion-select [(ngModel)]="mycity" *ngFor="let city of cities">
+        <ion-option  value="city.Name">{{city.Name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+  <div class="row">
+    Select favourite City:-
+    <div class="col-3" style="margin-right: 15px">
+      <button ion-button block (click)="openModal()">{{mycity}}<ion-icon name="md-create"></ion-icon>
+      </button>
+    </div>
+  </div>
+  Select more cities:-
+  <ion-item *ngFor="let city of cities; let i=index">
+    <ion-label>{{city.Name}}</ion-label>
+    <ion-checkbox color="dark" (click)="check(i)"></ion-checkbox>
+  </ion-item>
+  <button ion-button color="dark" style="height:80%;" (click)=goToHomePage()>Done</button>
 </ion-content>

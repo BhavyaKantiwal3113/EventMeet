@@ -8,12 +8,6 @@ import { CityPage } from '../city/city';
 import { UserProfilePage } from '../user-profile/user-profile';
 import { EventProfilePage } from '../event-profile/event-profile';
 
-/**
- * Generated class for the ExplorePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
