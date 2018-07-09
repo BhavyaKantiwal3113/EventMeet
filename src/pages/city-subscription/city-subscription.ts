@@ -7,6 +7,7 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument }
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Http } from '@angular/http';
 import { HomePage } from '../home/home';
+import { TabsPage} from '../tabs/tabs';
 export interface mychoice{
   Email: string,
   //Categories: any,
@@ -55,7 +56,7 @@ export class CitySubscriptionPage {
       Cities: this.cities,
       FavCity: this.mycity
     });
-     this.navCtrl.push(HomePage, {
+     this.navCtrl.push(TabsPage, {
        data: this.newemailid
      });
    }

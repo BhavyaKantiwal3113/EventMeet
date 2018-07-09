@@ -13,21 +13,21 @@
 
 
 <ion-content padding>
-  <div class="row">
-    <div class="col-3" style="margin-right: 15px">
-      <button ion-button block (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon>
-      </button>
-    </div>
-    <div class="col-3" style="margin-right: 15px">
-      <button ion-button block (click)="presentDatePopover($event)">{{dateName}} <ion-icon name="md-arrow-dropdown"></ion-icon></button>
-    </div>
-    <div class="col-3" style="margin-right: 15px">
-      <button ion-button block (click)="presentEventPopover($event)">{{eventName}} <ion-icon name="md-arrow-dropdown"></ion-icon></button>
-    </div>
-</div>
-<ion-item style="padding: 25px">
-  Featured Events in {{cityName}}
-  <button ion-button clear style="float: right;">See All</button>
+
+        <ion-grid>
+
+            <ion-row>
+                <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon></button></ion-col>
+               <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentEventPopover($event)"> {{eventName}}<ion-icon  name="md-arrow-dropdown"></ion-icon></button></ion-col>
+               <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentDatePopover($event)"> {{dateName}}<ion-icon name="md-arrow-dropdown"></ion-icon></button></ion-col>
+               <ion-col  ><button ion-button outline round icon-right style="width: 140px;" (click)="search($event)">{{Search}}</button></ion-col>
+            </ion-row>
+            </ion-grid>
+            
+<ion-item style="padding: 10px;font-size: 20px">
+
+  Trending Events in {{cityName}}
+  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
       <ion-slide>
@@ -44,28 +44,10 @@
   </div>
 </ion-item>
 
-<ion-item style="padding: 25px">
-  Upcoming Events in {{cityName}}
-  <button ion-button clear style="float: right;">See All</button>
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide>
-        <img src="assets/imgs/a.jpg" class="thumb-img"/>
-        <h2>Music Fest</h2>
-        <p>2018</p>
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/b.jpg" class="thumb-img"/>
-        <h2>Jazz Concert</h2>
-        <p>2018</p>
-      </ion-slide>
-    </ion-slides>
-  </div>
-</ion-item>
 
-<ion-item style="padding: 25px">
+<ion-item style="padding: 10px;font-size: 20px">
   Business Events in {{cityName}}
-  <button ion-button clear style="float: right;">See All</button>
+  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
       <ion-slide>
@@ -82,9 +64,9 @@
   </div>
 </ion-item>
 
-<ion-item style="padding: 25px">
+<ion-item style="padding: 10px;font-size: 20px">
   Sports Events in {{cityName}}
-  <button ion-button clear style="float: right;">See All</button>
+  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
       <ion-slide>
@@ -101,9 +83,9 @@
   </div>
 </ion-item>
 
-<ion-item style="padding: 25px">
+<ion-item style="padding: 10px;font-size: 20px">
   Exhibitions in {{cityName}}
-  <button ion-button clear style="float: right;">See All</button>
+  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
       <ion-slide>

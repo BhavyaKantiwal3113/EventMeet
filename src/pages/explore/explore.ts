@@ -18,6 +18,7 @@ export class ExplorePage {
   cityName = "Jaipur";
   dateName = "All Dates";
   eventName = "All Events";
+  Search = "Search";
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public popoverCtrl: PopoverController) {
   }
 
@@ -39,6 +40,9 @@ export class ExplorePage {
     popover.present({
       ev: myEvent
     });
+  }
+  search(myEvent){
+    
   }
   presentEventPopover(myEvent) {
     let popover = this.popoverCtrl.create(EventPopoverPage);
