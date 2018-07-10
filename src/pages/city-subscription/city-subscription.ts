@@ -6,12 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Http } from '@angular/http';
-<<<<<<< HEAD
 import { HomePage } from '../home/home';
 import { TabsPage} from '../tabs/tabs';
-=======
-import { TabsPage } from '../tabs/tabs';
->>>>>>> origin/bhumi
 export interface mychoice{
   Email: string,
   //Categories: any,
