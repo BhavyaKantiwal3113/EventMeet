@@ -17,8 +17,14 @@ import { IntroPage } from '../intro/intro';
   templateUrl: 'user-profile.html',
 })
 export class UserProfilePage {
- profile="assets/imgs/1.jpg";
+ //profile="assets/imgs/1.jpg";
+ myemail;
+ mypic;
+ myname;
   constructor(public navCtrl: NavController, public navParams: NavParams,public afAuth:AngularFireAuth) {
+      this.myemail = navParams.get('data1');
+      this.mypic = navParams.get('data2');
+      this.myname = navParams.get('data3');
   }
   openCitySubscriptionPage(){
     this.navCtrl.push(CitySubscriptionPage);
