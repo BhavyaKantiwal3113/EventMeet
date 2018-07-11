@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Notifications</ion-title>
+    <ion-title>Search Events</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,11 +10,11 @@
 
 <ion-content padding class="backColor">
   <ion-list  >
-    <ion-item class="backColor" *ngFor="let eimg of EventImg; let i=index">
+    <ion-item class="backColor" *ngFor="let eimg of EventImg; let i=index" (click)="openEventProfilePage(EventId[i])">
       <img src= {{eimg}} class="imgstyle" style="margin-right:10px;">
       <h2>Reminder:</h2>
-      <h2>{{EventName[i]}}</h2>
-      <p>{{EventUpDate[i]}}</p>
+      <h2> {{EventName[i]}}</h2>
+      <p>5 hrs ago</p>
     </ion-item>
   </ion-list>
 </ion-content>

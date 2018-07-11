@@ -48,6 +48,8 @@ export class EventProfilePage {
   newMember: any = {};
   currEvent: any = {};
   currEventDetail={};
+  EventUpDate;
+  coordinates;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
     this.myemail = navParams.get('data1');
     this.eid = navParams.get('data2');
@@ -65,6 +67,18 @@ export class EventProfilePage {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
       this.currEvent = doc.data();
+      let date        = new Date(doc.data().Dated.seconds * 1000),
+      datevalues  = [
+                       date.getFullYear(),
+                       date.getMonth()+1,
+                       date.getDate(),
+                       date.getHours(),
+                       date.getMinutes(),
+                       date.getSeconds(),
+                    ];
+                    var formatDate =  datevalues[2]+"/"+datevalues[1]+"/"+datevalues[0]+" "+datevalues[3]+":"+datevalues[4];
+                    console.log(formatDate);
+      this.EventUpDate = formatDate;
       console.log(this.currEvent);
       //console.log(this.currEvent.PeopleGoing);
       });
@@ -76,7 +90,8 @@ export class EventProfilePage {
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
      this.currEventDetail = doc.data();
-     console.log(this.currEventDetail);
+     this.coordinates = doc.data().Coordinates;
+     console.log(this.coordinates);
     });
   }).catch(function(error) {
     console.log("Error getting document:", error);
@@ -125,6 +140,9 @@ export class EventProfilePage {
     this.navCtrl.push(Map1Page);
   }
   openMap3Page(){
-    this.navCtrl.push(Map3Page);
+    this.navCtrl.push(Map3Page,
+    {
+      data: this.coordinates
+    });
   }
 }
