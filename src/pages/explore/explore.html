@@ -22,23 +22,35 @@
             <ion-row>
                 <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon></button></ion-col>
                <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentEventPopover($event)"> {{eventName}}<ion-icon  name="md-arrow-dropdown"></ion-icon></button></ion-col>
-               <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentDatePopover($event)"> {{dateName}}<ion-icon name="md-arrow-dropdown"></ion-icon></button></ion-col>
-               <ion-col  ><button ion-button outline round icon-right style="width: 140px;" (click)="search($event)">{{Search}}</button></ion-col>
+               <!-- <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentDatePopover($event)"> {{dateName}}<ion-icon name="md-arrow-dropdown"></ion-icon></button></ion-col> -->
+               <ion-col  ><button ion-button outline round icon-right style="width: 140px;margin-left: 84px;" (click)="search($event)">{{Search}}</button></ion-col>
             </ion-row>
             </ion-grid>
+            
             
 <ion-item style="padding: 10px;font-size: 20px">
 
   Trending Events in {{cityName}}
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+  <div style="height: 170px">
+    <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
+
+     
+
       <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
+        <ion-card style="height: 120px;">
         <img src= {{eimage}} (click)="openEventProfilePage(eventTrendId[i])" class="thumb-img"/>
-        <h2>{{eventTrendName[i]}}</h2>
+
+       <h2>{{eventTrendName[i]}}</h2> 
+      </ion-card>
       </ion-slide>
+
+
+
     </ion-slides>
   </div>
 </ion-item>
+
+
 
 <ion-item style="padding: 10px;font-size: 20px">
 

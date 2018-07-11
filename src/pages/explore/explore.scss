@@ -1,8 +1,15 @@
 page-explore {
-  .thumb-img {
-      padding: 10px;
-  }
+ 
   .gridB{
     flex-wrap: nowrap;
   }
+  ion-slide.swiper-slide {
+    left: 0%;
+}
+
+.thumb-img {
+    padding-right: 18px;
+    height: 100px;
+    width: 200px;
+}
 }

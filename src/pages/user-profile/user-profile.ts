@@ -35,9 +35,7 @@ export class UserProfilePage {
 openProfilePage(){
 this.navCtrl.push(ProfilePage);
 }
-openEditProfilePage(){
-  this.navCtrl.push(EditProfilePage);
-}
+
 openNotificationsPage()
 {
 this.navCtrl.push(NotificationsPage);

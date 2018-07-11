@@ -29,22 +29,23 @@ export interface trendingEvents{      //to get data from Events table
 })
 export class ExplorePage {
   myemail;
-  eventTrendImg=[''];              //Array to hold trending events image path
-  eventTrendId= ['']; 
-  eventTrendName=[''];
+  eventTrendImg=[];              //Array to hold trending events image path
+  eventTrendId= []; 
+  eventTrendName=[];
   businessTrendImg=[];
   businessTrendId=[];
   businessTrendName=[];
-  sportsTrendImg=[''];
-  sportsTrendId=[''];
-  sportsTrendName=[''];
-  exhibitionsTrendImg=[''];
-  exhibitionsTrendId=[''];
-  exhibitionsTrendName=[''];
+  sportsTrendImg=[];
+  sportsTrendId=[];
+  sportsTrendName=[];
+  exhibitionsTrendImg=[];
+  exhibitionsTrendId=[];
+  exhibitionsTrendName=[];
   cityName = "Jaipur";
   dateName = "All Dates";
   eventName = "All Events";
   Search = "Search";
+  StringToSplit=[''];
   eventsCollection: AngularFirestoreCollection<trendingEvents>;
   eventsInTrend: Observable<trendingEvents[]>;
   constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams, 
@@ -93,7 +94,8 @@ export class ExplorePage {
       querySnapshot.forEach((doc) => {
       this.eventTrendImg.push(doc.data().Pic);
       this.eventTrendId.push(doc.data().EventId);
-      this.eventTrendName.push(doc.data().Name);
+      this.eventTrendName.push((doc.data().Name.split(',')));
+      // this.StringToSplit.push(this.eventTrendName[]);
     });
   })
   .catch(function(error) {
