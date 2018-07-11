@@ -15,11 +15,9 @@
 
   <ion-item no-lines  class="backColor">
     <ion-avatar item-start>
-      <img src="assets/imgs/7.jpg" style="min-height: 80px;min-width: 80px;" imageViewer/>
+      <img src= {{mypic}} style="min-height: 80px;min-width: 80px;" imageViewer/>
     </ion-avatar>
-    <h2 style="font-weight: bold;font-size:21px;margin-left: 6px;">  Bhavya Kantiwal</h2>
-    <p style="margin-left: 6px">Jaipur</p>
-   
+    <h2 style="font-weight: bold;font-size:21px;margin-left: 6px;">{{myname}}</h2>
         <button ion-button clear  (click)="openEditProfilePage()" >
         Edit Profile
              </button>

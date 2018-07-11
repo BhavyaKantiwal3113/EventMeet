@@ -58,7 +58,7 @@ export class IntroPage {
   // }
   login()
   {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+   // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
             if(this.afAuth.user)
             {
              let u = this.afAuth.auth.currentUser;
@@ -72,7 +72,10 @@ export class IntroPage {
                 this.userEmail = profile.email;
       });
     }
-  }       
+  }  
+  else{
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }     
           this.getLoginUserDetails(this.userEmail);
            
   }
