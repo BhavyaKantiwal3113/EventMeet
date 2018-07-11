@@ -7,21 +7,115 @@ import { ModalController } from 'ionic-angular';
 import { CityPage } from '../city/city';
 import { UserProfilePage } from '../user-profile/user-profile';
 import { EventProfilePage } from '../event-profile/event-profile';
+import {Observable} from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Http } from '@angular/http';
+import { Timestamp } from 'rxjs';
 
-
+export interface trendingEvents{      //to get data from Events table
+  id: string,
+  name: string,
+  pic: string,
+  people: number,
+  city: string,
+  dated: Date,
+  category: string
+}
 @IonicPage()
 @Component({
   selector: 'page-explore',
   templateUrl: 'explore.html',
 })
 export class ExplorePage {
+  myemail;
+  eventTrendImg=[''];              //Array to hold trending events image path
+  eventTrendId= ['']; 
+  eventTrendName=[''];
+  businessTrendImg=[];
+  businessTrendId=[];
+  businessTrendName=[];
+  sportsTrendImg=[''];
+  sportsTrendId=[''];
+  sportsTrendName=[''];
+  exhibitionsTrendImg=[''];
+  exhibitionsTrendId=[''];
+  exhibitionsTrendName=[''];
   cityName = "Jaipur";
   dateName = "All Dates";
   eventName = "All Events";
   Search = "Search";
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public popoverCtrl: PopoverController) {
-  }
+  eventsCollection: AngularFirestoreCollection<trendingEvents>;
+  eventsInTrend: Observable<trendingEvents[]>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public modalCtrl: ModalController, public popoverCtrl: PopoverController,
+    public http: HttpClient, db: AngularFirestore, public httpm: Http) {
 
+      this.myemail = navParams.get('data');
+      this.eventsCollection = db.collection<trendingEvents>("Events");
+      this.eventsInTrend = this.eventsCollection.valueChanges();    
+
+      
+    this.eventtrends();
+    this.businessevents();
+
+    this.eventsCollection.ref.where("Category","==","Sports")
+      .get()
+      .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+      this.sportsTrendImg.push(doc.data().Pic);
+      this.sportsTrendId.push(doc.data().EventId);
+      this.sportsTrendName.push(doc.data().Name);
+    });
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+    });
+
+    this.eventsCollection.ref.where("Category","==","Exhibition")
+      .get()
+      .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+      this.exhibitionsTrendImg.push(doc.data().Pic);
+      this.exhibitionsTrendId.push(doc.data().EventId);
+      this.exhibitionsTrendName.push(doc.data().Name);
+    });
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+    });
+  }
+  eventtrends()
+  {
+    let cityView = this.cityName
+      this.eventsCollection.ref.where("City","==", cityView).orderBy("PeopleGoing", "desc").limit(8)
+      .get()
+      .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+      this.eventTrendImg.push(doc.data().Pic);
+      this.eventTrendId.push(doc.data().EventId);
+      this.eventTrendName.push(doc.data().Name);
+    });
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+    });
+  }
+  businessevents()
+  {
+    this.eventsCollection.ref.where("Category","==", "Business")
+      .get()
+      .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => { 
+      this.businessTrendImg.push(doc.data().Pic);
+      this.businessTrendId.push(doc.data().EventId);
+      this.businessTrendName.push(doc.data().Name);
+    });
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ExplorePage');
   }
@@ -53,8 +147,12 @@ export class ExplorePage {
       ev: myEvent
     });
   }
-  openEventProfilePage(){
-    this.navCtrl.push(EventProfilePage);
+  openEventProfilePage(eid)
+  {
+    this.navCtrl.push(EventProfilePage, {
+      data1: this.myemail,
+      data2: eid
+    });
   }
   openUserProfilePage()
   {

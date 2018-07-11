@@ -27,57 +27,38 @@
 <ion-item style="padding: 10px;font-size: 20px">
 
   Trending Events in {{cityName}}
-  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide>
-        <img src="assets/imgs/a.jpg" (click)="openEventProfilePage()" class="thumb-img"/>
-        <h2>Music Fest</h2>
-        <p>2018</p>
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/b.jpg" class="thumb-img"/>
-        <h2>Jazz Concert</h2>
-        <p>2018</p>
+      <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
+        <img src= {{eimage}} (click)="openEventProfilePage(eventTrendId[i])" class="thumb-img"/>
+        <h2>{{eventTrendName[i]}}</h2>
       </ion-slide>
     </ion-slides>
   </div>
 </ion-item>
-
 
 <ion-item style="padding: 10px;font-size: 20px">
+
   Business Events in {{cityName}}
-  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide>
-        <img src="assets/imgs/a.jpg" class="thumb-img"/>
-        <h2>Music Fest</h2>
-        <p>2018</p>   
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/b.jpg" class="thumb-img"/>
-        <h2>Jazz Concert</h2>
-        <p>2018</p>
+      <ion-slide *ngFor="let eimage of businessTrendImg; let i=index">
+        <img src= {{eimage}} (click)="openEventProfilePage(businessTrendId[i])" class="thumb-img"/>
+        <h2>{{businessTrendName[i]}}</h2>
       </ion-slide>
     </ion-slides>
   </div>
 </ion-item>
+
+
 
 <ion-item style="padding: 10px;font-size: 20px">
   Sports Events in {{cityName}}
-  <button ion-button clear style="float: right;font-size:16px;">See All</button>
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide>
-        <img src="assets/imgs/a.jpg" class="thumb-img"/>
-        <h2>Music Fest</h2>
-        <p>2018</p>
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/b.jpg" class="thumb-img"/>
-        <h2>Jazz Concert</h2>
-        <p>2018</p>
+      <ion-slide *ngFor="let simage of sportsTrendImg; let i=index">
+        <img src= {{simage}} (click)="openEventProfilePage(sportsTrendId[i])" class="thumb-img"/>
+        <h2>{{sportsTrendName[i]}}</h2>
       </ion-slide>
     </ion-slides>
   </div>
@@ -85,22 +66,17 @@
 
 <ion-item style="padding: 10px;font-size: 20px">
   Exhibitions in {{cityName}}
-  <button ion-button clear style="float: right;font-size:16px;">See All</button>
+
   <div>
     <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide>
-        <img src="assets/imgs/a.jpg" class="thumb-img"/>
-        <h2>Music Fest</h2>
-        <p>2018</p>
+      <ion-slide *ngFor="let eximage of exhibitionsTrendImg; let i=index">
+        <img src= {{eximage}} (click)="openEventProfilePage(exhibitionsTrendId[i])" class="thumb-img"/>
+        <h2>{{exhibitionsTrendName[i]}}</h2>
       </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/b.jpg" class="thumb-img"/>
-        <h2>Jazz Concert</h2>
-        <p>2018</p>
-      </ion-slide>
+      
     </ion-slides>
   </div>
-</ion-item>
+</ion-item> 
 
 
 </ion-content>

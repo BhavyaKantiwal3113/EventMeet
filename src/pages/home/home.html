@@ -15,12 +15,19 @@
 
 <ion-content padding>
     <h2 class = "font-trend">Trending Now</h2>
-      <div style="height: 100px" >
-    <ion-slides class="image-slider" loop="false" slidesPerView="2" >
-        <ion-slide *ngFor="let eimage of eventimg">
-          <img src = {{eimage}} class="thumb-img" imageViewer/>
+    <div style="height: 100px" >
+      <ion-slides class="image-slider" loop="false" slidesPerView="2" >
+        <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
+          <img src = {{eimage}} class="thumb-img"  (click) = "openEventProfilePage(eventUpId[i])"/>
         </ion-slide>
-    </ion-slides>
-      </div>
-     
+      </ion-slides>
+    </div>
+    <h2 class = "font-trend">Upcoming</h2>
+    <ion-list>
+      <ion-item *ngFor="let eimg of eventUpImg; let i=index" (click)="openEventProfilePage(eventUpId[i])">
+        <img src= {{eimg}} class="imgstyle"/>
+        <h2>{{eventUpName[i]}}</h2>
+        <p>{{eventUpCity[i]}}</p>
+      </ion-item>
+    </ion-list>
 </ion-content>
