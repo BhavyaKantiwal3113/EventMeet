@@ -1,38 +1,38 @@
-<!--
-  Generated template for the CitySubscriptionPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>City Subscription</ion-title>
+  <ion-navbar end>
+    <ion-title>City Subscription</ion-title> 
   </ion-navbar>
-
 </ion-header>
 
+<ion-content padding style="background-color: rgb(245, 241, 248)" >
+  <div class="row" style="padding-top: 10px;padding-bottom: 10px">
 
-<ion-content padding>
-  <!-- <ion-list>
-    <ion-item>
-      <ion-label>Current Nearby City:</ion-label>
-      <ion-select [(ngModel)]="mycity" *ngFor="let city of cities">
-        <ion-option  value="city.Name">{{city.Name}}</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list> -->
-  <div class="row">
-    Select favourite City:-
-    <div class="col-3" style="margin-right: 15px">
-      <button ion-button block (click)="openModal()">{{mycity}}<ion-icon name="md-create"></ion-icon>
+<div class="col-4" style="margin:15px;font-size: 18px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+ Current City:
+</div>      
+   
+    <div class="col-8" style="margin-left:15px">
+      <button ion-button round outline (click)="openModal()">{{mycity}}<ion-icon name="md-create" style="margin-left: 10px;"></ion-icon>
       </button>
     </div>
   </div>
-  Select more cities:-
-  <ion-item *ngFor="let city of cities; let i=index">
+
+  <div style="margin:15px;font-size: 20px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+    Cites Subscribed:
+  </div>
+  
+  <ion-item style="background-color: rgb(245, 241, 248);font-size: 16px" *ngFor="let city of cities; let i=index">
     <ion-label>{{city.Name}}</ion-label>
     <ion-checkbox color="dark" (click)="check(i)"></ion-checkbox>
   </ion-item>
-  <button ion-button color="dark" style="height:80%;" (click)=goToHomePage()>Done</button>
+   <ion-grid>
+     <ion-row style="padding:5px">
+
+         <button ion-button dark block round style="width:40%;margin-left: 100px" (click)=goToHomePage()>Done</button>
+
+     </ion-row>
+   </ion-grid> 
+
 </ion-content>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage,App, NavController, NavParams } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { DatePopoverPage } from '../date-popover/date-popover';
 import { EventPopoverPage } from '../event-popover/event-popover';
 import { ModalController } from 'ionic-angular';
 import { CityPage } from '../city/city';
-import { UserProfilePage } from '../user-profile/user-profile';
+import { ProfilePage } from '../profile/profile';
 import { EventProfilePage } from '../event-profile/event-profile';
 
 
@@ -19,7 +19,7 @@ export class ExplorePage {
   dateName = "All Dates";
   eventName = "All Events";
   Search = "Search";
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public appCtrl: App,public navParams: NavParams, public modalCtrl: ModalController, public popoverCtrl: PopoverController) {
   }
 
   ionViewDidLoad() {
@@ -44,6 +44,7 @@ export class ExplorePage {
   search(myEvent){
     
   }
+  
   presentEventPopover(myEvent) {
     let popover = this.popoverCtrl.create(EventPopoverPage);
     popover.onDidDismiss(data => {
@@ -56,9 +57,9 @@ export class ExplorePage {
   openEventProfilePage(){
     this.navCtrl.push(EventProfilePage);
   }
-  openUserProfilePage()
-  {
-    this.navCtrl.push(UserProfilePage);
+ 
+  openUserProfilePage(){
+    this.appCtrl.getRootNav().push(ProfilePage);
   }
 }
 

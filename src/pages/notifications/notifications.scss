@@ -1,8 +1,16 @@
 page-notifications {
     .imgstyle{
+        background-size: cover;
+        height:70px;
+        width:70px;
         float: left;
-        height: 50px;
-        width: 50px;
-        padding-inline-end: 10px;
+     
+        border: 3px;
+      border-radius: 5%;
+      border-style: solid;
+      border-color: black;
     }
+    .backColor{
+        background-color: rgb(245, 241, 248);
+      }
 }

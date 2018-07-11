@@ -1,19 +1,18 @@
 <ion-header>
   <ion-navbar>
-    
-  
                 <ion-title>EventMeet</ion-title> 
-                <ion-buttons end>
-                    <button ion-button icon-only (click)="openProfilePage()">
-                      <ion-icon name="md-person" style="color:black;zoom: 0.7">
-                      </ion-icon>
-                    </button>
-                  </ion-buttons>  
+               <ion-buttons end>
+                      <button ion-button icon-only (click)="openUserProfilePage()" >
+                       <ion-avatar >
+                      <img src="assets/imgs/aa.jpg" style="height: 30px; width: 30px;border-radius:50%">
+                    </ion-avatar>
+                      </button>
+                    </ion-buttons>
+
   </ion-navbar>
- 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding style="background-color: rgb(245, 241, 248)"> 
     <h2 class = "font-trend">Trending Now</h2>
       <div style="height: 100px" >
     <ion-slides class="image-slider" loop="false" slidesPerView="2" >

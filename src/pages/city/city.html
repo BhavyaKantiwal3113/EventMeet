@@ -10,13 +10,13 @@
           <button ion-button icon-only (click)="closeModal()" clear>
             <ion-icon name="arrow-back" style="color: black; zoom: 0.7"></ion-icon>
           </button>
-    <ion-title>city</ion-title>
+    <ion-title>City</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color: rgb(245, 241, 248)">
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
     <ion-list>
       <ion-item *ngFor="let item of items" (click)="selCity(item)">

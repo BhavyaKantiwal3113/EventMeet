@@ -42,6 +42,7 @@ export class CitySubscriptionPage {
     });
     modal.present();
   }
+
   check(i){
     this.cities[i].Selected=!this.cities[i].Selected;
     console.log(this.cities[i]);

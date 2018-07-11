@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { App,NavController,NavParams, Slides } from 'ionic-angular';
-import { UserProfilePage } from '../user-profile/user-profile';
+import { ProfilePage } from '../profile/profile';
 import { constructDependencies } from '@angular/core/src/di/reflective_provider';
 import { first } from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
@@ -40,10 +40,9 @@ export class HomePage {
     console.log("Error getting documents: ", error);
 });
   }
-  
-  openProfilePage()
-{
-  this.appCtrl.getRootNav().push(UserProfilePage);
-}
+  openUserProfilePage(){
+    this.appCtrl.getRootNav().push(ProfilePage);
+  }
+ 
 
 }

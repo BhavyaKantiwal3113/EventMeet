@@ -8,7 +8,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="backColor">
   <ion-list>
 
 
@@ -20,33 +20,38 @@
       <img *ngIf="!imageURL" [src]="'assets/imgs/3.jpg'" class="profile-picture__image" alt="Profile Picture">
     </section>
 
-    <ion-item > 
+    <ion-item class="backColor"> 
       
-      <ion-label floating>Firstname</ion-label>
+      <ion-label floating >Firstname</ion-label>
       <ion-input type="text" [(ngModel)]="user_firstName"></ion-input>
     </ion-item>
   
-    <ion-item >
+    <ion-item class="backColor">
       <ion-label floating>Lastname</ion-label>
       <ion-input type="text" [(ngModel)]="user_lastName"></ion-input>
     </ion-item>
-    <ion-item > 
+    <ion-item class="backColor" > 
       
       <ion-label floating>Email</ion-label>
       <ion-input type="text" [(ngModel)]="user_email"></ion-input>
     </ion-item>
   
-    <ion-item >
+    <ion-item class="backColor">
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="user_password"></ion-input>
     </ion-item>
-    <ion-item >
+    <ion-item class="backColor">
       <ion-label floating>Confirm Password</ion-label>
       <ion-input type="password" [(ngModel)]="user_Confirmpassword"></ion-input>
     </ion-item>
   
   </ion-list>
-<ion-item>
-  <button ion-button (click)="saveChanges()">Save Changes</button>
-</ion-item>
+
+<ion-grid>
+    <ion-row style="padding:5px">
+
+        <button ion-button dark block  style="width:40%;margin-left: 100px" (click)=saveChanges()>Save Changes</button>
+
+    </ion-row>
+  </ion-grid> 
 </ion-content>
