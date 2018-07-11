@@ -10,6 +10,8 @@ import { EventProfilePage } from '../event-profile/event-profile';
 import {Observable} from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
 import { Http } from '@angular/http';
 import { Timestamp } from 'rxjs';
 
@@ -29,6 +31,7 @@ export interface trendingEvents{      //to get data from Events table
 })
 export class ExplorePage {
   myemail;
+  mypic;
   eventTrendImg=[];              //Array to hold trending events image path
   eventTrendId= []; 
   eventTrendName=[];
@@ -50,9 +53,19 @@ export class ExplorePage {
   eventsInTrend: Observable<trendingEvents[]>;
   constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams, 
     public modalCtrl: ModalController, public popoverCtrl: PopoverController,
-    public http: HttpClient, db: AngularFirestore, public httpm: Http) {
+    public http: HttpClient, db: AngularFirestore, public httpm: Http, public afAuth:AngularFireAuth) {
 
-      this.myemail = navParams.get('data');
+      let u = this.afAuth.auth.currentUser;
+    if (u != null) {
+        u.providerData.forEach( (profile)=> {
+        console.log("  Email: " + profile.email);
+        console.log("  Photo URL: " + profile.photoURL);
+       this.myemail = profile.email;
+       this.mypic = profile.photoURL;
+       
+});
+    }
+
       this.eventsCollection = db.collection<trendingEvents>("Events");
       this.eventsInTrend = this.eventsCollection.valueChanges();    
 
