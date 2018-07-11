@@ -2,7 +2,7 @@
   <ion-navbar>
                 <ion-title>EventMeet</ion-title> 
                <ion-buttons end>
-                      <button ion-button icon-only (click)="openUserProfilePage()" >
+                      <button ion-button icon-only (click)="openProfilePage()" >
                        <ion-avatar >
                       <img src="assets/imgs/aa.jpg" style="height: 30px; width: 30px;border-radius:50%">
                     </ion-avatar>
@@ -12,7 +12,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-color: rgb(245, 241, 248)"> 
+<ion-content padding class="backClass"> 
     <h2 class = "font-trend">Trending Now</h2>
     <div style="height: 100px" >
       <ion-slides class="image-slider" loop="false" slidesPerView="2" >
@@ -23,7 +23,7 @@
     </div>
     <h2 class = "font-trend">Upcoming</h2>
     <ion-list>
-      <ion-item *ngFor="let eimg of eventUpImg; let i=index" (click)="openEventProfilePage(eventUpId[i])">
+      <ion-item  class="backClass" *ngFor="let eimg of eventUpImg; let i=index" (click)="openEventProfilePage(eventUpId[i])">
         <img src= {{eimg}} class="imgstyle"/>
         <h2>{{eventUpName[i]}}</h2>
         <p>{{eventUpCity[i]}}</p>

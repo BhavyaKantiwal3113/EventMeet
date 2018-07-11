@@ -65,8 +65,8 @@ export class HomePage {
     });
   }
   
-  openProfilePage()
-  {
+
+  openProfilePage(){
     this.appCtrl.getRootNav().push(ProfilePage, {
       data: this.myemail
     });

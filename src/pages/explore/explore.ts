@@ -55,7 +55,6 @@ export class ExplorePage {
       this.eventsCollection = db.collection<trendingEvents>("Events");
       this.eventsInTrend = this.eventsCollection.valueChanges();    
 
-      
     this.eventtrends();
     this.businessevents();
 
