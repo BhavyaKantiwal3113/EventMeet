@@ -9,19 +9,19 @@
 
 
 <ion-content padding style="background-color: rgb(245, 241, 248)">
-    <div style="background-image: url('assets/imgs/a.jpg')" class="eventStyle">
-     <h2 style="text-align: center; padding: 10px;">Music Fest</h2>
+    <div style="background-image: url('{{currEvent.Pic}}')" class="eventStyle">
+     <h2 style="text-align: center; padding: 10px;">{{currEvent.Name}}</h2>
     </div>
   <ion-item>
     <ion-grid>
       <ion-row>
         <ion-col col-6>
           <h3>Location</h3>
-          <p>Albert hall</p>
+          <p>{{currEventDetail.Location}},{{currEvent.City}},{{currEventDetail.State}}</p>
         </ion-col>
         <ion-col col-6>
           <h3>Date</h3>
-          <p>Sun Jul 01 2018</p>
+          <p>{{currEvent.Dated}}</p>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -36,7 +36,7 @@
     </h4>
     <ion-card>
         <ion-card-header>
-          8 people are going
+          {{currEvent.PeopleGoing}}
         </ion-card-header>
         <ion-card-content>
     
@@ -70,15 +70,12 @@
            Venue
         </ion-card-header>
         <ion-card-content>
-           Albert Hall
+           {{currEventDetail.Location}}
          </ion-card-content>
     </ion-card>
     <ion-item>
-        <ion-avatar item-start>
-          <img src="assets/imgs/b.jpg">
-        </ion-avatar>
         <h2>Created By</h2>
-        <p>Music Fest</p>
+        <p>{{currEventDetail.CreatedBy}}</p>
     </ion-item>
     
       

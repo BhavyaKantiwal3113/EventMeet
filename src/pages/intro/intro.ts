@@ -90,7 +90,7 @@ export class IntroPage {
   }
   signup() {
     let newemailid;
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
             if(this.afAuth.user)
             {
              let u = this.afAuth.auth.currentUser;
@@ -106,9 +106,35 @@ export class IntroPage {
                    Name: profile.displayName,
                    Pic: profile.photoURL
                  }
+                 
                  this.userRef.add(userdata);
                  newemailid = userdata.Email;
       });
+    }
+    else
+    {
+      this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+      if(this.afAuth.user)
+            {
+             let u = this.afAuth.auth.currentUser;
+             if (u != null) {
+                 u.providerData.forEach( (profile)=> {
+                 console.log("Sign-in provider: " + profile.providerId);
+                 console.log("  Provider-specific UID: " + profile.uid);
+                 console.log("  Name: " + profile.displayName);
+                 console.log("  Email: " + profile.email);
+                 console.log("  Photo URL: " + profile.photoURL);
+                 let userdata = {
+                   Email: profile.email,
+                   Name: profile.displayName,
+                   Pic: profile.photoURL
+                 }
+                 
+                 this.userRef.add(userdata);
+                 newemailid = userdata.Email;
+      });
+    }
+    }
     }
   }       
            this.navCtrl.setRoot(SelectCategoriesPage, {

@@ -6,11 +6,15 @@ import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Http } from '@angular/http';
-import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../home/home';
+import { TabsPage} from '../tabs/tabs';
+import {Observable} from 'rxjs/Observable';
+export interface userRegister{            //to register in UserRegisterForEvent collection
+  Email: string,
+  EventId: any
+}
 export interface mychoice{
   Email: string,
-  //Categories: any,
-  //Cities: any
 }
 @IonicPage()
 @Component({
@@ -28,12 +32,16 @@ export class CitySubscriptionPage {
     {Name: "Mumbai", Selected: false},
     {Name: "New Delhi", Selected: false},
     {Name: "Panaji", Selected: false}];
+  eventid= [];
+  userRegisterCollection: AngularFirestoreCollection<userRegister>;
+  registration: Observable<userRegister[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
     public afAuth:AngularFireAuth, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
       this.userRef = db.collection<mychoice>("UserEvent")
       this.newemailid = navParams.get('data1'); 
       this.usercategory = navParams.get('data2'); 
-  
+      this.userRegisterCollection = db.collection<userRegister>("UserRegisterForEvent");
+    this.registration = this.userRegisterCollection.valueChanges();
   }
   openModal() {
     const modal = this.modalCtrl.create(CityPage);
@@ -55,6 +63,10 @@ export class CitySubscriptionPage {
       Cities: this.cities,
       FavCity: this.mycity
     });
+    this.userRegisterCollection.doc(this.newemailid).set({
+      Email: this.newemailid,
+      EventId: this.eventid
+    })
      this.navCtrl.push(TabsPage, {
        data: this.newemailid
      });

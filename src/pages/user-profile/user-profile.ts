@@ -8,6 +8,9 @@ import { SelectCategoriesPage } from '../select-categories/select-categories';
 import { CitySubscriptionPage } from '../city-subscription/city-subscription';
 import { AboutPage } from '../about/about';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
+import { IntroPage } from '../intro/intro';
 @IonicPage()
 @Component({
   selector: 'page-user-profile',
@@ -15,7 +18,7 @@ import { AboutPage } from '../about/about';
 })
 export class UserProfilePage {
  profile="assets/imgs/1.jpg";
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public afAuth:AngularFireAuth) {
   }
   openCitySubscriptionPage(){
     this.navCtrl.push(CitySubscriptionPage);
@@ -40,6 +43,10 @@ openTermsPage()
 openSelectCategoriesPage()
   {
     this.navCtrl.push(SelectCategoriesPage);
+  }
+    logout() {
+    this.afAuth.auth.signOut();
+    this.navCtrl.push(IntroPage);
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserProfilePage');
