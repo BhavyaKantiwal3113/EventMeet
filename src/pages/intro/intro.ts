@@ -25,7 +25,8 @@ export interface UserData { Name: string,
 export class IntroPage {
   userRef: AngularFirestoreCollection<UserData>;
   userEmail;
-  constructor(public navCtrl: NavController,private viewCtrl: ViewController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public afAuth:AngularFireAuth, 
+  constructor(public navCtrl: NavController,private viewCtrl: ViewController, public navParams: NavParams, 
+    public actionSheetCtrl: ActionSheetController, public afAuth:AngularFireAuth, 
     public googleplus: GooglePlus, public http: HttpClient, db: AngularFirestore, public httpm: Http) 
     {
         this.userRef = db.collection<UserData>("UserProfile")
@@ -53,11 +54,10 @@ export class IntroPage {
  
     actionSheet.present();
   }
-  // logout() {
-  //   this.afAuth.auth.signOut();
-  // }
+  
   login()
   {
+    let mypic;
    // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
             if(this.afAuth.user)
             {
@@ -69,7 +69,7 @@ export class IntroPage {
                  console.log("  Name: " + profile.displayName);
                  console.log("  Email: " + profile.email);
                  console.log("  Photo URL: " + profile.photoURL);
-                this.userEmail = profile.email;
+               this.userEmail = profile.email; 
       });
     }
   }  
@@ -80,20 +80,18 @@ export class IntroPage {
            
   }
   getLoginUserDetails(userEmail)
-  {
+  { 
     this.userRef.ref.where("Email","==", userEmail)
     .get().then((querySnapshot) => {
             if(querySnapshot.empty)
               console.log("Login Failed");
             else
-               this.navCtrl.setRoot(TabsPage, {
-                 data: userEmail
-               }); 
+               this.navCtrl.setRoot(TabsPage);
     });
   }
   signup() {
     let newemailid;
-    // this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    // this.afAuth.auth.signInWithPopup(newauth.GoogleAuthProvider());
             if(this.afAuth.user)
             {
              let u = this.afAuth.auth.currentUser;

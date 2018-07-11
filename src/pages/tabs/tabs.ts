@@ -14,7 +14,5 @@ export class TabsPage {
   tab2Root = ExplorePage;
   tab3Root = NotificationsPage;
 
-  constructor() {
-
-  }
+  constructor() {}
 }

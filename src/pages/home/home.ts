@@ -7,6 +7,8 @@ import {Observable} from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Http } from '@angular/http';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase';
 import { EventProfilePage } from '../event-profile/event-profile';
 export interface trendingEvents{      //to get data from Events table
    id: string,
@@ -21,7 +23,8 @@ export interface trendingEvents{      //to get data from Events table
   templateUrl: 'home.html'
 })
 export class HomePage {
-  myemail;
+  myemail; 
+  mypic;
   images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
   eventsCollection: AngularFirestoreCollection<trendingEvents>;
   eventsInTrend: Observable<trendingEvents[]>;
@@ -31,8 +34,18 @@ export class HomePage {
   eventUpId = [];               
   eventUpName = [];
   eventUpCity = [];
-  constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
-    this.myemail = navParams.get('data');
+  constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams,
+     public http: HttpClient, db: AngularFirestore, public httpm: Http, public afAuth:AngularFireAuth) {
+    let u = this.afAuth.auth.currentUser;
+    if (u != null) {
+        u.providerData.forEach( (profile)=> {
+        console.log("  Email: " + profile.email);
+        console.log("  Photo URL: " + profile.photoURL);
+       this.myemail = profile.email;
+       this.mypic = profile.photoURL;
+       
+});
+    }
    this.eventsCollection = db.collection<trendingEvents>("Events");
    this.eventsInTrend = this.eventsCollection.valueChanges();
 
@@ -48,8 +61,21 @@ export class HomePage {
     console.log("Error getting documents: ", error);
     });
 
-   // let currDate = Date.now();
-    this.eventsCollection.ref.orderBy("Dated", "desc").limit(8)
+  //   let currDate:any   = Date.now().toString().substring(0,10),  //convert timestamp in human readable form
+  // date        = new Date(currDate * 1000),
+  // datevalues  = [
+  //                  date.getFullYear(),
+  //                  date.getMonth()+1,
+  //                  date.getDate(),
+  //                  date.getHours(),
+  //                  date.getMinutes(),
+  //                  date.getSeconds(),
+  //               ];
+  //               var formatDate =  datevalues[2]+"/"+datevalues[1]+"/"+datevalues[0]+ " "+datevalues[3]+":"+datevalues[4];
+  //               console.log(formatDate);
+               
+    let date1 = new Date(Date.now());
+    this.eventsCollection.ref.where("Dated",">=", date1).orderBy("Dated", "asc").limit(8)
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -65,7 +91,7 @@ export class HomePage {
     });
   }
   
-
+     
   openProfilePage(){
     this.appCtrl.getRootNav().push(ProfilePage, {
       data: this.myemail
