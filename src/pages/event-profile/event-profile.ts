@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Map1Page } from '../map1/map1';
 import { Map3Page } from '../map3/map3';
 
 import {Observable} from 'rxjs/Observable';
@@ -36,18 +35,20 @@ export interface userRegister{
 export class EventProfilePage {
   
   more = true;
-  interested = true;
+  interested =  true;
   eid;
   myemail;
   eventsCollection: AngularFirestoreCollection<viewEvent>;        //for Events collection
   eventView: Observable<viewEvent[]>;                             //for Events collection
   eventDetailCollection: AngularFirestoreCollection<viewEventDetail>; //for EventDetails collection
   eventDetailView: Observable<viewEventDetail[]>;                     //for EventDetails collectiion
-  userRegisterCollection: AngularFirestoreCollection<userRegister>;
-  registration: Observable<userRegister[]>;
+  userRegisterCollection: AngularFirestoreCollection<userRegister>;   //for UserRegisterForEvent collection
+  registration: Observable<userRegister[]>;                           //for UserRegisterForEvent collection
   newMember: any = {};
   currEvent: any = {};
   currEventDetail={};
+  firstHalfDetails : string;
+  secondHalfDetails: string;
   EventUpDate;
   coordinates;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
@@ -56,8 +57,8 @@ export class EventProfilePage {
     this.eventsCollection = db.collection<viewEvent>("Events");
     this.eventView = this.eventsCollection.valueChanges();
 
-    // this.userRegisterCollection = db.collection<userRegister>("UserRegisterForEvent");
-    // this.registration = this.userRegisterCollection.valueChanges();
+    this.userRegisterCollection = db.collection<userRegister>("UserRegisterForEvent");
+    this.registration = this.userRegisterCollection.valueChanges();
 
     this.eventDetailCollection = db.collection<viewEventDetail>("EventDetails");
     this.eventDetailView = this.eventDetailCollection.valueChanges();
@@ -90,13 +91,34 @@ export class EventProfilePage {
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
      this.currEventDetail = doc.data();
+     this.firstHalfDetails = doc.data().Detail.substr(0,133);
+     this.secondHalfDetails = doc.data().Detail.substr(133);
      this.coordinates = doc.data().Coordinates;
      console.log(this.coordinates);
     });
   }).catch(function(error) {
     console.log("Error getting document:", error);
 });
-  
+
+//let eid = this.eid;
+    let myemailid = this.myemail;
+    
+    this.userRegisterCollection.ref.where("Email", "==", myemailid)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.newMember = doc.data();
+       for(let i = 0; i<doc.data().EventId.length; i++)
+       {
+         if(id == doc.data().EventId[i])
+         {
+           this.interested = false;
+           break;}
+       }
+      });
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
   }
 
   ionViewDidLoad() {
@@ -109,35 +131,15 @@ export class EventProfilePage {
   }
   goInEvent()
   {
-    let id = this.eid.substr(1);
-    
-    this.currEvent.PeopleGoing++;
-    this.eventsCollection.doc(""+id).update(this.currEvent);
-  //   let myemailid = this.myemail;
-  //   this.userRegisterCollection.ref.where("Email", "==", myemailid)
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       this.newMember = doc.data();
-  //      for(let i = 0; i<doc.data().EventId.length; i++)
-  //      {
-  //        if(id == doc.data().EventId[i])
-  //        this.interested = true;
-  //        else
-  //        {
-  //          this.newMember.EventId.push(this.eid);
-  //          this.userRegisterCollection.doc(this.myemail).update(this.newMember);
-  //          this.interested =!this.interested;
-  //        }
-  //      }
-  //     });
-  //   }).catch(function(error) {
-  //     console.log("Error getting document:", error);
-  // });
-    
-  }
-  openMap1Page(){
-    this.navCtrl.push(Map1Page);
+    let id = this.eid;
+    let myemailid = this.myemail;
+           console.log(myemailid +" goinevent");
+           this.newMember.EventId.push(this.eid);
+           this.userRegisterCollection.doc(this.myemail).update(this.newMember);
+           this.interested =!this.interested;
+           this.currEvent.PeopleGoing++;
+           this.eventsCollection.doc(""+id.substr(1)).update(this.currEvent);
+      
   }
   openMap3Page(){
     this.navCtrl.push(Map3Page,
