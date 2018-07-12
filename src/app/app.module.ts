@@ -13,6 +13,8 @@ import { ExplorePage } from '../pages/explore/explore';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { FeedbackPage } from '../pages/feedback/feedback';
+import { HelpPage } from '../pages/help/help';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { SelectCategoriesPage } from '../pages/select-categories/select-categories';
@@ -64,6 +66,8 @@ firebase.initializeApp(firebaseConfig);
     IntroPage,
     CityPage,
     Map1Page,
+    FeedbackPage,
+    HelpPage,
     Map3Page,
     EventPopoverPage,
     DatePopoverPage,
@@ -109,6 +113,8 @@ firebase.initializeApp(firebaseConfig);
      Map3Page,
      SplashPage,
      EventPopoverPage,
+     FeedbackPage,
+     HelpPage,
      DatePopoverPage,
      TermsPage,
      EventProfilePage,

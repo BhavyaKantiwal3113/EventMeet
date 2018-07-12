@@ -10,7 +10,7 @@
       </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding style="background-color: rgb(245, 241, 248)">
+<ion-content padding class="backClass">
   <ion-grid>
 
     <ion-row>
@@ -23,7 +23,7 @@
 <h2> Trending Events in {{cityName}}</h2>
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
     <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
-      <ion-card style="height: 160px;" >
+      <ion-card style="height: 160px;" class="backClass">
           <img src= {{eimage}} (click)="openEventProfilePage(eventTrendId[i])"class="thumb-img "/>
     <ion-card-content>
       <p style="font-size:15px">
@@ -38,7 +38,7 @@
 <h2> Business Events in {{cityName}}</h2>
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
   <ion-slide *ngFor="let eimage of businessTrendImg; let i=index">
-    <ion-card style="height: 160px;" >
+    <ion-card style="height: 160px;" class="backClass">
         <img src= {{eimage}} (click)="openEventProfilePage(businessTrendId[i])" class="thumb-img"/>
     <ion-card-content>
       <p style="font-size:15px">
@@ -53,7 +53,7 @@
 <h2> Sports Events in {{cityName}}</h2>
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
   <ion-slide *ngFor="let simage of sportsTrendImg; let i=index">
-    <ion-card style="height: 160px;" >
+    <ion-card style="height: 160px;" class="backClass">
         <img src= {{simage}} (click)="openEventProfilePage(sportsTrendId[i])" class="thumb-img"/>
     <ion-card-content>
       <p style="font-size:15px">
@@ -68,7 +68,7 @@
 <h2> Exhibitions Events in {{cityName}}</h2>
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
   <ion-slide *ngFor="let eximage of exhibitionsTrendImg; let i=index">
-    <ion-card style="height: 160px;" >
+    <ion-card style="height: 160px;" class="backClass">
         <img src= {{eximage}} (click)="openEventProfilePage(exhibitionsTrendId[i])" class="thumb-img"/>
     <ion-card-content>
       <p style="font-size:15px">

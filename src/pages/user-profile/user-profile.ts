@@ -10,6 +10,8 @@ import { AboutPage } from '../about/about';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { IntroPage } from '../intro/intro';
+import { FeedbackPage } from '../feedback/feedback';
+import { HelpPage } from '../help/help';
 @IonicPage()
 @Component({
   selector: 'page-user-profile',
@@ -36,6 +38,12 @@ export class UserProfilePage {
   }
 openProfilePage(){
 this.navCtrl.push(ProfilePage);
+}
+openFeedbackPage(){
+this.navCtrl.push(FeedbackPage);
+}
+openHelpPage(){
+this.navCtrl.push(HelpPage);
 }
 openNotificationsPage()
 {
