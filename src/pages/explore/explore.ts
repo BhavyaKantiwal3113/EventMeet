@@ -48,7 +48,7 @@ export class ExplorePage {
   dateName = "All Dates";
   eventName = "All Events";
   Search = "Search";
-  StringToSplit=[''];
+  StringToSplit;
   eventsCollection: AngularFirestoreCollection<trendingEvents>;
   eventsInTrend: Observable<trendingEvents[]>;
   constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams, 
@@ -107,8 +107,7 @@ export class ExplorePage {
       querySnapshot.forEach((doc) => {
       this.eventTrendImg.push(doc.data().Pic);
       this.eventTrendId.push(doc.data().EventId);
-      this.eventTrendName.push((doc.data().Name.split(',')));
-      // this.StringToSplit.push(this.eventTrendName[]);
+      this.eventTrendName.push((doc.data().Name));
     });
   })
   .catch(function(error) {

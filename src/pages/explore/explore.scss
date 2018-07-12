@@ -3,13 +3,26 @@ page-explore {
   .gridB{
     flex-wrap: nowrap;
   }
-  ion-slide.swiper-slide {
-    left: 0%;
-}
+//   ion-slide.swiper-slide {
+//     left: 0%;
+// }
 
 .thumb-img {
-    padding-right: 18px;
+    padding-right: 9px;
+    padding-left: 9px;
+    padding-top:9px;
+    
     height: 100px;
     width: 200px;
+}
+// .spacing{
+//   margin-left:10px;
+//   margin-top:15px;
+//   margin-bottom: 10px;
+// }
+ion-slides {
+  display: block;
+  width: 100%;
+  height: 40%;
 }
 }
