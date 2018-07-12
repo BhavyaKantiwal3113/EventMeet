@@ -1,4 +1,3 @@
-
 <ion-header>
 
   <ion-navbar>
@@ -45,22 +44,18 @@
     <ion-card>
         <ion-card-header>
            Event Details
-          <ion-icon item-left name="arrow-forward" (click)="toggleSection()" *ngIf="!more" style="float: right;"></ion-icon> 
+          <ion-icon item-left name="arrow-up" (click)="toggleSection()" *ngIf="!more" style="float: right;"></ion-icon> 
             <ion-icon item-left name="arrow-down"(click)="toggleSection()"  *ngIf="more" style="float: right;"></ion-icon>
         </ion-card-header>
         <ion-card-content>
-           jfkdjfie  kdjfilril  iurjekjflksdfjdl    
-          <p *ngIf="!more">
-             lsdlks   dflkj  jdklfjdkjf dklsjklsj dskllsjfd kldkjff jdklsj lsdjd 
-          </p>
+           {{firstHalfDetails}} 
+          <span *ngIf="!more">
+            {{secondHalfDetails}}
+          </span>
          </ion-card-content>
     </ion-card>
-
-    <ion-item>
-      <button ion-button clear style="width:100%" (click) ="openMap1Page()">Map1 Page</button>
-        </ion-item>
         <ion-item>
-          <button ion-button clear style="width:100%" (click) ="openMap3Page()">Map3 Page</button>
+          <button ion-button clear style="width:100%" (click) ="openMap3Page()">View On Map</button>
             </ion-item>
         
 
