@@ -36,6 +36,7 @@ import {Map3Page} from '../pages/map3/map3';
 import { UserProvider } from '../providers/user/user';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { CitySubscriptionPage } from '../pages/city-subscription/city-subscription';
+import { SearchPage } from '../pages/search/search';
 
 
 export const firebaseConfig = {
@@ -69,7 +70,8 @@ firebase.initializeApp(firebaseConfig);
     TermsPage,
     EventProfilePage,
     TabsPage,                  // to control tabs
-    CitySubscriptionPage
+    CitySubscriptionPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,HttpClientModule,
@@ -111,7 +113,8 @@ firebase.initializeApp(firebaseConfig);
      TermsPage,
      EventProfilePage,
     TabsPage,
-    CitySubscriptionPage
+    CitySubscriptionPage,
+    SearchPage
   ],
   providers: [ UserProvider,
     StatusBar,

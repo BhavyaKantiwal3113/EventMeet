@@ -18,23 +18,7 @@
                 <ion-col  ><button ion-button outline round icon-right style="width: 140px;margin-left: 84px;" (click)="search($event)">{{Search}}</button></ion-col>
             </ion-row>
         </ion-grid>
-<!-- <ion-item style="padding: 10px;font-size: 20px">
-      Trending Events in {{cityName}}
-      <div style="height: 200px">
-      <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
-      <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
-        <ion-card style="height: 170px;" >
-        <img src= {{eimage}} (click)="openEventProfilePage(eventTrendId[i])"class="thumb-img spacing"/>
-              <h3>{{eventTrendName[i]}}</h3>
-              <ion-card-content>
-                  The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                </ion-card-content>
-           
-      </ion-card>
-      </ion-slide>
-    </ion-slides>
-  </div>
-</ion-item> -->
+
 <h2> Trending Events in {{cityName}}</h2>
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
     <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
@@ -97,35 +81,6 @@
 
 
 
-<!-- 
-<ion-item style="padding: 10px;font-size: 20px">
-
-  Business Events in {{cityName}}
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide *ngFor="let eimage of businessTrendImg; let i=index">
-        <img src= {{eimage}} (click)="openEventProfilePage(businessTrendId[i])" class="thumb-img"/>
-        <h2>{{businessTrendName[i]}}</h2>
-      </ion-slide>
-    </ion-slides>
-  </div>
-</ion-item>
-
-
-
-<ion-item style="padding: 10px;font-size: 20px">
-  Sports Events in {{cityName}}
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
-      <ion-slide *ngFor="let simage of sportsTrendImg; let i=index">
-        <img src= {{simage}} (click)="openEventProfilePage(sportsTrendId[i])" class="thumb-img"/>
-        <h2>{{sportsTrendName[i]}}</h2>
-      </ion-slide>
-    </ion-slides>
-  </div>
-</ion-item>
-
-  -->
 
 
 </ion-content>

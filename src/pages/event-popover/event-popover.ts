@@ -14,7 +14,8 @@ import { ViewController } from 'ionic-angular';
   templateUrl: 'event-popover.html',
 })
 export class EventPopoverPage {
-  eList = ['All events','business', 'sports', 'exhibition', 'concert', 'party'];
+  eList = ['All events','Business', 'Sports', 'Exhibition', 'Entertainment', 
+  'Health n Wellness','Music', 'Theatre','Festivals','Food n Drinks','Party'];
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 

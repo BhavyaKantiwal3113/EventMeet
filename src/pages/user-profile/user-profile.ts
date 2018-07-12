@@ -24,9 +24,13 @@ export class UserProfilePage {
       this.mypic = navParams.get('data2');
       this.myname = navParams.get('data3');
   }
-  openCitySubscriptionPage(){
-    this.navCtrl.push(CitySubscriptionPage);
-  }
+  // openCitySubscriptionPage(){
+  //   this.navCtrl.push(CitySubscriptionPage,
+  //   {
+  //     data1: this.myemail,
+  //     data3: "userProfile"
+  //   });
+  // }
   openAboutPage(){
     this.navCtrl.push(AboutPage);
   }
@@ -43,7 +47,9 @@ openTermsPage()
 }
 openSelectCategoriesPage()
   {
-    this.navCtrl.push(SelectCategoriesPage);
+    this.navCtrl.push(SelectCategoriesPage, {
+      data: this.myemail,
+    });
   }
     logout() {
     this.afAuth.auth.signOut();

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { CityPage } from '../city/city';
+//import { CityPage } from '../city/city';
 import { HttpClient } from '@angular/common/http';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -25,7 +25,7 @@ export class CitySubscriptionPage {
   newemailid = 'email';    // newemailid fetched from selectCategoriesPage
   usercategory;  // fetched from selectCategoriesPage
   userRef: AngularFirestoreCollection<mychoice>;
-  mycity = "Ahemadabad";
+  //mycity = "Ahemadabad";
   cities = [
     {Name: "Ahemadabad", Selected: false},
     {Name: "Jaipur", Selected: false},
@@ -39,37 +39,37 @@ export class CitySubscriptionPage {
     public afAuth:AngularFireAuth, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
       this.userRef = db.collection<mychoice>("UserEvent")
       this.newemailid = navParams.get('data1'); 
-      this.usercategory = navParams.get('data2'); 
+          this.usercategory = navParams.get('data2'); 
       this.userRegisterCollection = db.collection<userRegister>("UserRegisterForEvent");
     this.registration = this.userRegisterCollection.valueChanges();
   }
-  openModal() {
-    const modal = this.modalCtrl.create(CityPage);
-    modal.onDidDismiss(data => {
-      this.mycity = data;
-    });
-    modal.present();
-  }
+  // openModal() {
+  //   const modal = this.modalCtrl.create(CityPage);
+  //   modal.onDidDismiss(data => {
+  //     this.mycity = data;
+  //   });
+  //   modal.present();
+  // }
 
   check(i){
     this.cities[i].Selected=!this.cities[i].Selected;
     console.log(this.cities[i]);
    }
    goToHomePage()
-   { 
+   {
+    
     this.userRef.doc(this.newemailid).set({
       Email: this.newemailid,
       Categories: this.usercategory,
       Cities: this.cities,
-      FavCity: this.mycity
+      // FavCity: this.mycity
     });
     this.userRegisterCollection.doc(this.newemailid).set({
       Email: this.newemailid,
       EventId: this.eventid
     })
-     this.navCtrl.push(TabsPage, {
-       data: this.newemailid
-     });
+     this.navCtrl.push(TabsPage);
+  
    }
   ionViewDidLoad() {
     console.log('ionViewDidLoad CitySubscriptionPage');

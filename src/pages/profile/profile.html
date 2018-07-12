@@ -32,13 +32,13 @@
 
      <div [ngSwitch]="abc">
         <ion-list *ngSwitchCase="'one'" >
-    <ion-item class="backColor">
+    <ion-item class="backColor" *ngFor="let timg of TrendImg; let i = index;" (click)="openEventProfilePage(TrendId[i])">
       <ion-thumbnail item-start>
-        <img src="assets/imgs/8.jpg">
+        <img src= {{timg}}>
       </ion-thumbnail>
-      <h2>Event1</h2> 
+      <h2>{{TrendName[i]}}</h2> 
     </ion-item>
-    <ion-item class="backColor">
+    <!-- <ion-item class="backColor">
       <ion-thumbnail item-start>
         <img src="assets/imgs/9.jpg">
       </ion-thumbnail>
@@ -55,7 +55,7 @@
         <img src="assets/imgs/3.jpg">
       </ion-thumbnail>
       <h2>Event4</h2> 
-    </ion-item>
+    </ion-item> -->
     
         </ion-list>
 

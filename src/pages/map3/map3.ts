@@ -29,8 +29,8 @@ export class Map3Page {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Map3Page');
       console.log("inside init map");
-      
-      var myLatLng = {lat: 26.8557, lng:75.8089};
+      let c = this.navParams.get('data')
+      var myLatLng = {lat: c.latitude, lng:c.longitude};
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,

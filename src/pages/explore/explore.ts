@@ -14,6 +14,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 import { Http } from '@angular/http';
 import { Timestamp } from 'rxjs';
+import { SearchPage } from '../search/search';
 
 export interface trendingEvents{      //to get data from Events table
   id: string,
@@ -24,6 +25,7 @@ export interface trendingEvents{      //to get data from Events table
   dated: Date,
   category: string
 }
+
 @IonicPage()
 @Component({
   selector: 'page-explore',
@@ -46,7 +48,7 @@ export class ExplorePage {
   exhibitionsTrendName=[];
   cityName = "Jaipur";
   dateName = "All Dates";
-  eventName = "All Events";
+  categoryName = "All Events";
   Search = "Search";
   StringToSplit;
   eventsCollection: AngularFirestoreCollection<trendingEvents>;
@@ -100,8 +102,7 @@ export class ExplorePage {
   }
   eventtrends()
   {
-    let cityView = this.cityName
-      this.eventsCollection.ref.where("City","==", cityView).orderBy("PeopleGoing", "desc").limit(8)
+      this.eventsCollection.ref.orderBy("PeopleGoing", "desc").limit(8)
       .get()
       .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -139,23 +140,19 @@ export class ExplorePage {
     });
     modal.present();
   }
-  presentDatePopover(myEvent) {
-    let popover = this.popoverCtrl.create(DatePopoverPage);
-    popover.onDidDismiss(data => {
-      this.dateName = data;
-    });
-    popover.present({
-      ev: myEvent
-    });
-  }
-  search(myEvent){
-    
+  
+  search(cityName, categoryName){
+    this.navCtrl.push(SearchPage, {
+      data1: cityName,
+      data2: categoryName,
+      data3: this.myemail
+    })
   }
   
   presentEventPopover(myEvent) {
     let popover = this.popoverCtrl.create(EventPopoverPage);
     popover.onDidDismiss(data => {
-      this.eventName = data;
+      this.categoryName = data;
     });
     popover.present({
       ev: myEvent

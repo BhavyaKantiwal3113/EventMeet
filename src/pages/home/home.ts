@@ -34,6 +34,7 @@ export class HomePage {
   eventUpId = [];               
   eventUpName = [];
   eventUpCity = [];
+  eventUpDate = [];
   constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams,
      public http: HttpClient, db: AngularFirestore, public httpm: Http, public afAuth:AngularFireAuth) {
     let u = this.afAuth.auth.currentUser;
@@ -61,20 +62,10 @@ export class HomePage {
     console.log("Error getting documents: ", error);
     });
 
-  //   let currDate:any   = Date.now().toString().substring(0,10),  //convert timestamp in human readable form
-  // date        = new Date(currDate * 1000),
-  // datevalues  = [
-  //                  date.getFullYear(),
-  //                  date.getMonth()+1,
-  //                  date.getDate(),
-  //                  date.getHours(),
-  //                  date.getMinutes(),
-  //                  date.getSeconds(),
-  //               ];
-  //               var formatDate =  datevalues[2]+"/"+datevalues[1]+"/"+datevalues[0]+ " "+datevalues[3]+":"+datevalues[4];
-  //               console.log(formatDate);
+ 
                
     let date1 = new Date(Date.now());
+    
     this.eventsCollection.ref.where("Dated",">=", date1).orderBy("Dated", "asc").limit(8)
   .get()
   .then((querySnapshot) => {
@@ -83,7 +74,20 @@ export class HomePage {
       this.eventUpCity.push(doc.data().City);
       this.eventUpImg.push(doc.data().Pic);
       this.eventUpId.push(doc.data().EventId);
-      // console.log(Date.now());
+      
+      let date        = new Date(doc.data().Dated.seconds * 1000),
+      datevalues  = [
+                       date.getFullYear(),
+                       date.getMonth()+1,
+                       date.getDate(),
+                       date.getHours(),
+                       date.getMinutes(),
+                       date.getSeconds(),
+                    ];
+                    var formatDate =  datevalues[2]+"/"+datevalues[1]+"/"+datevalues[0];
+                    console.log(formatDate);
+      this.eventUpDate.push(formatDate);
+     
     });
   })
   .catch(function(error) {
