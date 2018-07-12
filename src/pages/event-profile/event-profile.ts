@@ -42,8 +42,8 @@ export class EventProfilePage {
   eventView: Observable<viewEvent[]>;                             //for Events collection
   eventDetailCollection: AngularFirestoreCollection<viewEventDetail>; //for EventDetails collection
   eventDetailView: Observable<viewEventDetail[]>;                     //for EventDetails collectiion
-  userRegisterCollection: AngularFirestoreCollection<userRegister>;
-  registration: Observable<userRegister[]>;
+  userRegisterCollection: AngularFirestoreCollection<userRegister>;   //for UserRegisterForEvent collection
+  registration: Observable<userRegister[]>;                           //for UserRegisterForEvent collection
   newMember: any = {};
   currEvent: any = {};
   currEventDetail={};
@@ -108,13 +108,11 @@ export class EventProfilePage {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         this.newMember = doc.data();
-      let flag = 0;
        for(let i = 0; i<doc.data().EventId.length; i++)
        {
          if(id == doc.data().EventId[i])
          {
            this.interested = false;
-          flag =1;
            break;}
        }
       });

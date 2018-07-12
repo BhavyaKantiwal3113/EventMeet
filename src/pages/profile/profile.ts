@@ -28,6 +28,11 @@ export interface trendingEvents{      //to get data from Events collection
   category: string
 }
 
+export interface userRegister{      //to get data from UserRegisterForEvent collection
+  Email: string,
+  EventId: any
+}
+
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -43,14 +48,20 @@ export class ProfilePage {
  userCityChoiceArray: Array<string>;
  TrendImg=[];
  TrendId=[];
- TrendName=[];                             t
+ TrendName=[];  
+ GoingEventImg=[];
+ GoingEventId=[];
+ GoingEventName=[];                            t
  profileCollection: AngularFirestoreCollection<Profile>;
  profileView: Observable<Profile[]>;
  userEventCollection: AngularFirestoreCollection<userCatEvent>;
  userEventView: Observable<userCatEvent[]>;
  trendingEventCollection: AngularFirestoreCollection<trendingEvents>;
  trendingEventView: Observable<trendingEvents[]>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http,public afAuth:AngularFireAuth, public appCtrl: App) {
+ userRegisterCollection: AngularFirestoreCollection<userRegister>;   //for UserRegisterForEvent collection
+ registration: Observable<userRegister[]>;                           //for UserRegisterForEvent collection
+ goingEvents: any;                                                   //events the user is going
+ constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http,public afAuth:AngularFireAuth, public appCtrl: App) {
     this.myemail = navParams.get('data');
     this.profileCollection = db.collection<Profile>("UserProfile");
     this.profileView = this.profileCollection.valueChanges();
@@ -60,6 +71,9 @@ export class ProfilePage {
 
     this.trendingEventCollection = db.collection<trendingEvents>("Events");
     this.trendingEventView = this.trendingEventCollection.valueChanges();
+
+    this.userRegisterCollection = db.collection<userRegister>("UserRegisterForEvent");
+    this.registration = this.userRegisterCollection.valueChanges();
 
   let u = this.afAuth.auth.currentUser;
              if (u != null) {
@@ -132,6 +146,36 @@ export class ProfilePage {
     console.log("Error getting document "+Error)
   });
  
+  let myemailid = this.myemail;
+    
+    this.userRegisterCollection.ref.where("Email", "==", myemailid)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        this.goingEvents = doc.data();
+      
+  let date2 = new Date(Date.now());
+
+  for(let g=0; g<doc.data().EventId.length;g++)
+  { console.log("hilll");
+    this.trendingEventCollection.ref.where("EventId","==", doc.data().EventId[g]).where("Dated",">=", date2)
+   .get()
+   .then((querySnapshot) => {
+   querySnapshot.forEach((doc) => {
+   this.GoingEventImg.push(doc.data().Pic);
+   this.GoingEventId.push(doc.data().EventId);
+   this.GoingEventName.push(doc.data().Name);
+   console.log(this.GoingEventName+"hi");
+ });
+})
+.catch(function(error) {
+ console.log("Error getting documents: ", error);
+ });
+  }
+});
+}).catch(function(error) {
+  console.log("Error getting document:", error);
+});
 }
 openEventProfilePage(eid)
 {
