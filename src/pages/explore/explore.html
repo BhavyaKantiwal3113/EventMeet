@@ -11,13 +11,14 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding style="background-color: rgb(245, 241, 248)">
-        <ion-grid>
-            <ion-row>
-                <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon></button></ion-col>
-                <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentEventPopover($event)"> {{eventName}}<ion-icon  name="md-arrow-dropdown"></ion-icon></button></ion-col>
-                <ion-col  ><button ion-button outline round icon-right style="width: 140px;margin-left: 84px;" (click)="search($event)">{{Search}}</button></ion-col>
-            </ion-row>
-        </ion-grid>
+  <ion-grid>
+
+    <ion-row>
+        <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon></button></ion-col>
+       <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentEventPopover($event)"> {{categoryName}}<ion-icon  name="md-arrow-dropdown"></ion-icon></button></ion-col>
+       <ion-col  ><button ion-button outline round icon-right style="width: 140px;margin-left: 84px;" (click)="search(cityName,categoryName)">{{Search}}</button></ion-col>
+    </ion-row>
+    </ion-grid>
 
 <h2> Trending Events in {{cityName}}</h2>
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
