@@ -17,7 +17,7 @@
     <div style="height: 100px" >
       <ion-slides class="image-slider" loop="false" slidesPerView="2" >
         <ion-slide *ngFor="let eimage of eventTrendImg; let i=index">
-          <img src = {{eimage}} class="thumb-img"  (click) = "openEventProfilePage(eventUpId[i])"/>
+          <img src = {{eimage}} class="thumb-img"  (click) = "openEventProfilePage(eventTrendId[i])"/>
         </ion-slide>
       </ion-slides>
     </div>
