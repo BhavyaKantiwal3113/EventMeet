@@ -21,25 +21,46 @@ export interface trendingEvents{      //to get data from Events table
 })
 export class SearchPage {
   myemail;
-  EventImg=[];
-  EventId=[];
-  EventName=[];
+  EventImg: any=[];
+  EventId: any=[];
+  EventName: any=[];
+  EventDate: any=[];
   eventsCollection: AngularFirestoreCollection<trendingEvents>;
   eventsInTrend: Observable<trendingEvents[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
       let cityName = navParams.get('data1');
       let categorytName = navParams.get('data2');
+      console.log(cityName);
+      console.log(categorytName);
       this.myemail = navParams.get('data3');
       this.eventsCollection = db.collection<trendingEvents>("Events");
-      this.eventsInTrend = this.eventsCollection.valueChanges();    
-      if(categorytName !="All Events")
-    {  this.eventsCollection.ref.where("Category","==", categorytName).where("City","==",cityName)
+      this.eventsInTrend = this.eventsCollection.valueChanges(); 
+      this.viewEvents(cityName,categorytName);   
+      
+  }
+  viewEvents(cityName, categorytName)
+  {
+    if(categorytName !="All Events")
+    {  this.eventsCollection.ref.where("City","==", cityName).where("Category","==", categorytName)
       .get()
       .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
       this.EventImg.push(doc.data().Pic);
       this.EventId.push(doc.data().EventId);
       this.EventName.push(doc.data().Name);
+      let date        = new Date(doc.data().Dated.seconds * 1000),
+      datevalues  = [
+                       date.getFullYear(),
+                       date.getMonth()+1,
+                       date.getDate(),
+                       date.getHours(),
+                       date.getMinutes(),
+                       date.getSeconds(),
+                    ];
+                    var formatDate =  datevalues[2]+"/"+datevalues[1]+"/"+datevalues[0];
+                    console.log(formatDate);
+                    this.EventDate.push(formatDate);
+     
     });
   })
   .catch(function(error) {
@@ -48,13 +69,25 @@ export class SearchPage {
   }
   else
   {
-    this.eventsCollection.ref.where("City","==",cityName)
+    this.eventsCollection.ref.where("City","==", cityName)
   .get()
   .then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
   this.EventImg.push(doc.data().Pic);
   this.EventId.push(doc.data().EventId);
   this.EventName.push(doc.data().Name);
+  let date        = new Date(doc.data().Dated.seconds * 1000),
+  datevalues  = [
+                   date.getFullYear(),
+                   date.getMonth()+1,
+                   date.getDate(),
+                   date.getHours(),
+                   date.getMinutes(),
+                   date.getSeconds(),
+                ];
+                var formatDate =  datevalues[2]+"/"+datevalues[1]+"/"+datevalues[0];
+                console.log(formatDate);
+                this.EventDate.push(formatDate);
 });
 console.log(this.EventId)
 })

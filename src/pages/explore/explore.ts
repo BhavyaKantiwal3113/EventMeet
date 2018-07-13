@@ -142,11 +142,9 @@ export class ExplorePage {
     modal.present();
   }
   
-  search(cityName, categoryName){
-    console.log(cityName);
-    console.log(categoryName);
+  search(categoryName){
     this.navCtrl.push(SearchPage, {
-      data1: cityName,
+      data1: this.cityName,
       data2: categoryName,
       data3: this.myemail
     })

@@ -30,7 +30,7 @@ export class CityPage {
   }
   initializeItems() {
     this.items = [
-     'Ahemadabad',
+     "Ahmedabad",
      'Jaipur',
      'Mumbai',
      'New Delhi',
