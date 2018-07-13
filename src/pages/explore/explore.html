@@ -19,7 +19,7 @@
     <ion-row>
         <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="openModal()">{{cityName}}<ion-icon name="md-create"></ion-icon></button></ion-col>
        <ion-col ><button ion-button outline round icon-right style="width: 140px;" (click)="presentEventPopover($event)"> {{categoryName}}<ion-icon  name="md-arrow-dropdown"></ion-icon></button></ion-col>
-       <ion-col  ><button ion-button outline round icon-right style="width: 140px;margin-left: 84px;" (click)="search(cityName,categoryName)">{{Search}}</button></ion-col>
+       <ion-col  ><button ion-button outline round icon-right style="width: 140px;margin-left: 84px;" (click)="search(categoryName)">{{Search}}</button></ion-col>
     </ion-row>
     </ion-grid>
 
@@ -38,44 +38,60 @@
   </ion-slide>
 </ion-slides>
 
-<h2> Business Events in {{cityName}}</h2>
+<h2> Business Events</h2>
+
 <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
   <ion-slide *ngFor="let eimage of businessTrendImg; let i=index">
     <ion-card style="height: 160px;" class="backClass">
         <img src= {{eimage}} (click)="openEventProfilePage(businessTrendId[i])" class="thumb-img"/>
-        <h2>{{businessTrendName[i]}}</h2>
+        <ion-card-content>
+          <p style="font-size:15px">
+            {{businessTrendName[i]}}
+        </p>
+    </ion-card-content>
+  </ion-card>
       </ion-slide>
     </ion-slides>
-  </div>
-</ion-item>
 
 
 
-<ion-item style="padding: 10px;font-size: 20px">
-  Sports Events
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+
+
+
+<h2>Sports Events</h2>
+  
+    <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
       <ion-slide *ngFor="let simage of sportsTrendImg; let i=index">
+          <ion-card style="height: 160px;" class="backClass">
         <img src= {{simage}} (click)="openEventProfilePage(sportsTrendId[i])" class="thumb-img"/>
-        <h2>{{sportsTrendName[i]}}</h2>
+        <ion-card-content>
+            <p style="font-size:15px">
+              {{sportsTrendName[i]}}
+          </p>
+      </ion-card-content>
+    </ion-card>
       </ion-slide>
     </ion-slides>
-  </div>
-</ion-item>
+ 
 
-<ion-item style="padding: 10px;font-size: 20px">
-  Exhibitions
 
-  <div>
-    <ion-slides class="image-slider" loop="false" slidesPerView="2">
+<h2> Exhibitions</h2> 
+
+ 
+    <ion-slides class="image-slider" loop="false" slidesPerView="1.5">
       <ion-slide *ngFor="let eximage of exhibitionsTrendImg; let i=index">
+          <ion-card style="height: 160px;" class="backClass">   
         <img src= {{eximage}} (click)="openEventProfilePage(exhibitionsTrendId[i])" class="thumb-img"/>
-        <h2>{{exhibitionsTrendName[i]}}</h2>
+        <ion-card-content>
+            <p style="font-size:15px">
+              {{exhibitionsTrendName[i]}}
+          </p>
+      </ion-card-content>
+    </ion-card>
       </ion-slide>
       
     </ion-slides>
-  </div>
-</ion-item> 
+
 
 
 </ion-content>

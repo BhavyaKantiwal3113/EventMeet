@@ -29,19 +29,19 @@ export class SearchPage {
   eventsInTrend: Observable<trendingEvents[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http) {
       let cityName = navParams.get('data1');
-      let categorytName = navParams.get('data2');
+      let categoryName = navParams.get('data2');
       console.log(cityName);
-      console.log(categorytName);
+      console.log(categoryName);
       this.myemail = navParams.get('data3');
       this.eventsCollection = db.collection<trendingEvents>("Events");
       this.eventsInTrend = this.eventsCollection.valueChanges(); 
-      this.viewEvents(cityName,categorytName);   
+      this.viewEvents(cityName,categoryName);   
       
   }
   viewEvents(cityName, categorytName)
   {
     if(categorytName !="All Events")
-    {  this.eventsCollection.ref.where("City","==", cityName).where("Category","==", categorytName)
+    {  this.eventsCollection.ref.where("City","==", cityName).where("Category","==", categoryName)
       .get()
       .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
