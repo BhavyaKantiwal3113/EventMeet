@@ -1,48 +1,62 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>event-profile</ion-title>
+    <ion-title>Event Profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding style="background-color: rgb(245, 241, 248)">
-    <div style="background-image: url('{{currEvent.Pic}}')" class="eventStyle">
-     <h2 style="text-align: center; padding: 10px;">{{currEvent.Name}}</h2>
-    </div>
-  <ion-item>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6>
-          <h3>Location</h3>
-          <p>{{currEventDetail.Location}},{{currEvent.City}},{{currEventDetail.State}}</p>
-        </ion-col>
-        <ion-col col-6>
-          <h3>Date</h3>
+<ion-content style="background-color: rgb(245, 241, 248);padding: 0px">
+    
+  <ion-card class="backColor">
+    <ion-card-content style="text-align: center;font-weight: bold;font-size:18px;">
+     {{currEvent.Name}}
+    </ion-card-content>
+   
+    <img class="sizing" src = {{currEvent.Pic}}  />
+    <ion-row>
+      <ion-col col-6 style="padding-left: 10px;">
+          <h3 style="font-weight: bold;font-size:17px;">Location</h3>
+          <p>{{currEventDetail.Location}},<br>
+            {{currEvent.City}},{{currEventDetail.State}}</p>
+      </ion-col>
+      <ion-col col-6 style="padding-right: 10px;">
+          <h3 style="font-weight: bold;font-size:17px;">Date</h3>
           <p>{{currEvent.Dated}}</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-item>
-    <h4 *ngIf = "interested">
-      Are you attending ?
-      <button ion-button color="light" (click)="goInEvent()">Yes</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+<ion-card class="backColor">
+<ion-card-title style="text-align: center;">
+  
+  <h4 *ngIf = "interested" style="font-weight: bold;font-size:17px;">
+      Are you attending ?&nbsp;&nbsp;&nbsp;&nbsp;
+      <button ion-button round outline (click)="goInEvent()">Yes</button>
     <!-- <button ion-button color="light">May Be</button> -->
     </h4>
-    <h4 *ngIf = "!interested">
-      You are going.
+
+    <h4 *ngIf = "!interested" style="font-weight: bold;font-size:17px;">
+      You are going&nbsp;&nbsp;&nbsp;&nbsp;
+     <ion-icon name="star" style="color:gold"></ion-icon>
     </h4>
-    <ion-card>
-        <ion-card-header>
-          {{currEvent.PeopleGoing}}
+
+  </ion-card-title>   
+</ion-card>
+    <ion-card class="backColor">
+        <ion-card-header style="text-align: center">
+          {{currEvent.PeopleGoing}} People are going
         </ion-card-header>
         <ion-card-content>
     
         </ion-card-content>
     </ion-card>
-    <ion-card>
-        <ion-card-header>
+
+
+    <ion-card class="backColor">
+        <ion-card-header style="font-weight: bold;font-size:17px;">
            Event Details
           <ion-icon item-left name="arrow-up" (click)="toggleSection()" *ngIf="!more" style="float: right;"></ion-icon> 
             <ion-icon item-left name="arrow-down"(click)="toggleSection()"  *ngIf="more" style="float: right;"></ion-icon>
@@ -54,24 +68,27 @@
           </span>
          </ion-card-content>
     </ion-card>
-        <ion-item>
-          <button ion-button clear style="width:100%" (click) ="openMap3Page()">View On Map</button>
-            </ion-item>
-        
 
+<ion-card class="backColor">
+  <ion-card-title style="text-align: center;font-weight: bold;font-size:20px">
+     <button ion-button clear style="width:100%" (click) ="openMap3Page()">View On Map</button>
+  </ion-card-title>
+</ion-card>
+      
 
-    <ion-card>
-        <ion-card-header>
+    <ion-card class="backColor">
+        <ion-card-header style="font-weight: bold;font-size:17px;">
            Venue
         </ion-card-header>
         <ion-card-content>
            {{currEventDetail.Location}}
          </ion-card-content>
     </ion-card>
-    <ion-item>
-        <h2>Created By</h2>
-        <p>{{currEventDetail.CreatedBy}}</p>
-    </ion-item>
-    
+
+<ion-card class="backColor">
+  <ion-card-header style="font-weight: bold;font-size:17px;">Created By</ion-card-header>
+  <ion-card-content>{{currEventDetail.CreatedBy}}</ion-card-content>
+</ion-card>
+
       
 </ion-content>
