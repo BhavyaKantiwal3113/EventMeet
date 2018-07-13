@@ -24,7 +24,7 @@
   <ion-grid>
   <ion-row>
     <ion-col col-6 col-md-4 col-xl-3 class="catText" *ngFor="let category of categories | async; let i = index">
-      <div (click)="check(i)" [ngClass]="{'selected':usercategory[i].Selected === 'true'}" class="image-container" [style.background-image]="'url(' + category.Pic + ')'">
+      <div (click)="check(i)" [ngClass]="{'selected':usercategory[i].Selected}" class="image-container" [style.background-image]="'url(' + category.Pic + ')'">
       </div>
       <p style="padding: 1px"> {{category.Name}}</p>
     </ion-col>

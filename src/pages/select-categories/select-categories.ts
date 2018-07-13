@@ -50,6 +50,7 @@ usercategory = [
   }
    check(i){
     this.usercategory[i].Selected=!this.usercategory[i].Selected;
+    console.log(this.categories[i]);
     console.log(this.usercategory[i]);
     
    }
