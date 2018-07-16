@@ -18,13 +18,18 @@ import { HelpPage } from '../help/help';
   templateUrl: 'user-profile.html',
 })
 export class UserProfilePage {
- myemail;
- mypic;
- myname;
+//  myemail;
+//  mypic;        //Changes here
+//  myname;
+ myemail = "guest@gmail.com";         //remove 3 lines on removing guestlogin
+ mypic = "./assets/imgs/1.jpg";
+ myname = "Guest";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public afAuth:AngularFireAuth) {
-      this.myemail = navParams.get('data1');
-      this.mypic = navParams.get('data2');
-      this.myname = navParams.get('data3');
+      // this.myemail = navParams.get('data1');
+      // this.mypic = navParams.get('data2');         //Changes here
+      // this.myname = navParams.get('data3');
+     
   }
   // openCitySubscriptionPage(){
   //   this.navCtrl.push(CitySubscriptionPage,

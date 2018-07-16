@@ -41,7 +41,7 @@ export class SearchPage {
   viewEvents(cityName, categorytName)
   {
     if(categorytName !="All Events")
-    {  this.eventsCollection.ref.where("City","==", cityName).where("Category","==", categoryName)
+    {  this.eventsCollection.ref.where("City","==", cityName).where("Category","==", categorytName)
       .get()
       .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

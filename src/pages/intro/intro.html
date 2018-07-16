@@ -7,14 +7,18 @@
 
 <ion-content padding style=" background-image: url('./assets/imgs/b5.jpg'); background-size: cover;">
         <img src="./assets/imgs/eventlogo.png" alt="EventMeet" style="width: 1150px; margin-top: 30%">
-        <ion-grid style="margin-top: 10%">
-                <ion-row>
+        <ion-grid style="margin-top: 3%">      <!--Changed here from 10% -->
+                        <ion-row>
+                                        <ion-col col-1></ion-col>
+                                            <ion-col col-3><button ion-button round class="button-style" (click)="GuestLogin()">Guest Login</button></ion-col>
+                                    </ion-row>
+                <!-- <ion-row>
                     <ion-col col-2></ion-col>
                         <ion-col col-3><button ion-button round class="button-style" (click)=presentActionSheet(1)> Login</button></ion-col>
                 </ion-row>
                 <ion-row>  
                         <ion-col col-2></ion-col>
                         <ion-col col-3><button ion-button round class="button-style" (click)=presentActionSheet(2)>SignUp</button></ion-col>
-                </ion-row>
+                </ion-row> -->
         </ion-grid>
 </ion-content>

@@ -37,16 +37,17 @@ export class HomePage {
   eventUpDate = [];
   constructor(public navCtrl: NavController,public appCtrl: App, public navParams: NavParams,
      public http: HttpClient, db: AngularFirestore, public httpm: Http, public afAuth:AngularFireAuth) {
-    let u = this.afAuth.auth.currentUser;
-    if (u != null) {
-        u.providerData.forEach( (profile)=> {
-        console.log("  Email: " + profile.email);
-        console.log("  Photo URL: " + profile.photoURL);
-       this.myemail = profile.email;
-       this.mypic = profile.photoURL;
+//     let u = this.afAuth.auth.currentUser;          //Changes here
+//     if (u != null) {
+//         u.providerData.forEach( (profile)=> {
+//         console.log("  Email: " + profile.email);
+//         console.log("  Photo URL: " + profile.photoURL);
+//        this.myemail = profile.email;
+//        this.mypic = profile.photoURL;
        
-});
-    }
+// });
+ //   }
+ this.mypic = "./assets/imgs/1.jpg";       //remove this on removing guest login
    this.eventsCollection = db.collection<trendingEvents>("Events");
    this.eventsInTrend = this.eventsCollection.valueChanges();
 
@@ -98,13 +99,15 @@ export class HomePage {
      
   openProfilePage(){
     this.appCtrl.getRootNav().push(ProfilePage, {
-      data: this.myemail
+     // data: this.myemail
+     data: "guest@gmail.com"
     });
   }
   openEventProfilePage(eid)
   {
     this.navCtrl.push(EventProfilePage, {
-      data1: this.myemail,
+     // data1: this.myemail,
+     data1: "guest@gmail.com",
       data2: eid
     });
   }

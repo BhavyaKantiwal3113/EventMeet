@@ -62,7 +62,8 @@ export class ProfilePage {
  registration: Observable<userRegister[]>;                           //for UserRegisterForEvent collection
  goingEvents: any;                                                   //events the user is going
  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, db: AngularFirestore, public httpm: Http,public afAuth:AngularFireAuth, public appCtrl: App) {
-    this.myemail = navParams.get('data');
+   //this.myemail = navParams.get('data');     //Changes here
+   this.myemail = "guest@gmail.com"    
     this.profileCollection = db.collection<Profile>("UserProfile");
     this.profileView = this.profileCollection.valueChanges();
 
@@ -75,17 +76,18 @@ export class ProfilePage {
     this.userRegisterCollection = db.collection<userRegister>("UserRegisterForEvent");
     this.registration = this.userRegisterCollection.valueChanges();
 
-  let u = this.afAuth.auth.currentUser;
-             if (u != null) {
-                 u.providerData.forEach( (profile)=> {
-                this.mypic = profile.photoURL;
-                this.myname = profile.displayName;
-                this.myemail = profile.email
-      });
-    }
-  let useremail = this.myemail
-  
-
+  // let u = this.afAuth.auth.currentUser;                  //Changed here
+  //            if (u != null) {
+  //                u.providerData.forEach( (profile)=> {
+  //               this.mypic = profile.photoURL;
+  //               this.myname = profile.displayName;
+  //               this.myemail = profile.email
+  //     });
+  //   }
+  // let useremail = this.myemail
+  let useremail = "guest@gmail.com";
+  this.myname = "Guest";                          //Remove this when removing guest login
+  this.mypic = "./assets/imgs/1.jpg";
   this.userEventCollection.doc(useremail).ref
   .get()
   .then((doc) => {

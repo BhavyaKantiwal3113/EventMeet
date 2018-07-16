@@ -89,6 +89,19 @@ export class IntroPage {
                this.navCtrl.setRoot(TabsPage);
     });
   }
+  GuestLogin()
+  {
+    let userdata = {
+      Email: "guest@gmail.com",
+      Name: "Guest",
+      Pic: "./assets/imgs/aa.jpg"
+    }
+    
+    this.userRef.add(userdata);
+  this.navCtrl.setRoot(SelectCategoriesPage, {
+    data: "guest@gmail.com"
+  });
+  }
   signup() {
     let newemailid;
     // this.afAuth.auth.signInWithPopup(newauth.GoogleAuthProvider());
